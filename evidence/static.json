@@ -1,0 +1,26 @@
+[
+  {
+    "lang": "es",
+    "route": "/",
+    "status": 200,
+    "apiCount": 11,
+    "initialOwnJavaScriptGzipBytes": 205,
+    "staticChecks": "passed"
+  },
+  {
+    "lang": "en",
+    "route": "/en/",
+    "status": 200,
+    "apiCount": 11,
+    "initialOwnJavaScriptGzipBytes": 205,
+    "staticChecks": "passed"
+  },
+  {
+    "lang": "pt",
+    "route": "/pt/",
+    "status": 200,
+    "apiCount": 11,
+    "initialOwnJavaScriptGzipBytes": 205,
+    "staticChecks": "passed"
+  }
+]
