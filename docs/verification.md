@@ -1,71 +1,53 @@
 # Verification report — 2026-09-20
 
-## Current execution — human instruction 33
+## Final build verification
 
-Node reports v22.23.2. Before running acceptance suites, a Node ESM probe created an HTTP server on `127.0.0.1` with an ephemeral port and called `chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--remote-debugging-port=0'],timeout:15000})` from Playwright. Playwright supplied an isolated temporary profile. The command (`node --input-type=module`, with the prescribed Node PATH) exited 1: `browserType.launch: Failed to launch the browser process`; Chrome exited with `signal=SIGABRT`. The browser never reached the debugging/page-load checks. Playwright reported temporary-directory cleanup completed, and the probe closed its own HTTP server.
+The Factory supervisor supplied an isolated Chrome 153.0.8010.53 runner. Its readiness report and our Playwright CDP/loopback probe both succeeded. Node was v22.23.2. The probe loaded `runner-ready` from its own temporary HTTP server, closed its context/server, and explicitly exited its client connection. No supervisor browser was closed or killed. Previous sandbox launch failures are resolved by this authorized runner.
 
-The alternative computer-use runner was also checked: `cua.getState()` returned no browser providers, and `cua.createBrowserTab('chrome','about:blank',{sessionName:'🔎 Portal verification'})` returned `Browser is not available: chrome`. This execution has approval policy `never`, so there is no permitted escalation mechanism. No security restrictions were bypassed, no existing browser profiles were opened, and no historical preview processes were signalled.
+`npm ci --cache .npm-cache --no-audit --no-fund` succeeded (388 packages). Final `npm run check` and `npm run build` succeeded, with zero diagnostics and three generated pages. All final suites used one production preview at **http://127.0.0.1:4527**, explicitly supplied through TEST_URL:
 
-Independent verification on the unchanged application succeeded:
+- `npm run test:static`: exit 0; three routes, local resources, portfolio, metadata, structured data, mail subjects, anchors, sitemap and robots.
+- `npm test`: exit 0; all language/section transitions, intercepted CTA activation without sending mail, nine responsive/axe checks, skip link, complete keyboard traversal at 360/1440, and essential navigation/contact without JavaScript.
+- `npm run test:performance`: exit 0; nine Lighthouse 13.5.0 measurements, default simulated mobile configuration. Full reports preserve configSettings, runtime and timing evidence in `evidence/lighthouse/`.
 
-- `npm ci --cache .npm-cache --no-audit --no-fund`: exit 0, 388 packages installed; setup only, no audit claim.
-- `npm run check && npm run build`: exit 0, zero errors/warnings/hints and three static pages generated.
-- `TEST_URL=http://127.0.0.1:4497 npm run test:static`: exit 0, all three routes and local resources passed; initial own JavaScript was 205 bytes gzip per route. `evidence/static.json` was regenerated with identical contents.
+| Route | Median Performance | Median LCP (ms) | Median CLS |
+| --- | --- | --- | --- |
+| / | 100 | 1053.2114 | 0 |
+| /en/ | 100 | 1053.5282 | 0 |
+| /pt/ | 100 | 1054.5556 | 0 |
 
-The static test used one Astro production preview started via `preview({server:{host:'127.0.0.1',port:4497}})`. Its returned port confirmed the exact TEST_URL; `await server.stop()` completed in `finally`. This execution's preview was cleaned up successfully.
+Each route has 205 bytes gzip of initial own JavaScript. Local SVG logos declare dimensions; the footer logo is lazy-loaded. Two local WOFF2 font preloads preserve font-display: swap while avoiding layout shifts.
 
-AC-2, browser activation in AC-3, language/anchor interaction in AC-4, Lighthouse metrics in AC-6, and rendered/manual accessibility in AC-7 remain unverified. No browser acceptance suite, Lighthouse runs or screenshots are claimed. The editorial matrix and three dictionaries were inspected; no application or dependency changes were made.
+## Visual, keyboard and contrast review
 
-Outcome: **environment-blocked**, requiring a delivery `decision`/Failed result, not another architectural consultation. Before Retry, the environment operator must provide an authorized worker/runner that can launch isolated Chrome, connect to its debugging interface and load the worker's loopback page. Then run the existing browser suite, nine Lighthouse measurements and visual/keyboard/contrast review against one final-build preview with explicit TEST_URL. Existing acceptance thresholds remain unchanged.
+The Builder inspected the rendered captures for all three languages at 360, 768 and 1440 px. Logo, violet/coral identity, gradients and geometric typography remain recognizable against the original. Audience cards, portfolio, platform and contact sections are readable without overlapping or horizontal scrolling. Long mobile hero words now wrap within their container. The documented Space Grotesk fallback remains in place.
 
-The sections below are historical execution records, not current validation or routing instructions.
+| Page | 360 px | 768 px | 1440 px |
+| --- | --- | --- | --- |
+| Spanish | [PNG](../evidence/es-360.png) | [PNG](../evidence/es-768.png) | [PNG](../evidence/es-1440.png) |
+| English | [PNG](../evidence/en-360.png) | [PNG](../evidence/en-768.png) | [PNG](../evidence/en-1440.png) |
+| Portuguese | [PNG](../evidence/pt-360.png) | [PNG](../evidence/pt-768.png) | [PNG](../evidence/pt-1440.png) |
+| Original public site | [PNG](../evidence/original-360.png) | [PNG](../evidence/original-768.png) | [PNG](../evidence/original-1440.png) |
 
-## Latest assigned-worker prerequisite and verification
+Keyboard review used actual Tab/Enter events through Playwright and inspection of the resulting ordered focus records and screenshots, rather than a DOM-only inference. The 19 links proceed through skip, brand, section navigation, languages, hero actions, audience actions, contact and footer. The skip link reaches main. Focus is visible on light cards and dark sections; no trap was observed. `evidence/focus-{es,en,pt}-{0,10,13,16}.png` records representative mobile focus states. `evidence/verification.json` records complete focus sequences at 360 and 1440.
 
-The assigned worker again reports Node v22.23.2. A fresh isolated worktree Chrome profile, explicit installed `CHROME_PATH`, temporary loopback HTTP server and debugging connection probe failed with `ECONNREFUSED 127.0.0.1:52146` (exit 1). The profile and temporary server were cleaned up. Chrome never reached the page-load check. Decisions 15–17 therefore still block browser-suite and Lighthouse execution; neither was repeated, and no screenshots or manual visual/keyboard/contrast evidence was obtained.
+All nine full axe reports (`evidence/axe-*.json`) have zero violations. Their color-contrast **incomplete** items were reviewed separately: gradient backgrounds, conservative overlap detection and decorative Unicode symbols require inspection. Screenshots show navigation and text unobscured; decorative symbols are aria-hidden. Solid-color text ratios tested by axe are at least 7.47:1. Manual WCAG relative-luminance calculations for the CSS colors give white/violet 11.85:1, white/dark-gradient 12.13:1, coral eyebrow/dark-gradient 8.11:1, muted contact text/dark-gradient 9.91:1, and dark text/audience cards at least 10.62:1. Conservatively compositing the brightest decorative orbit at its maximum 0.36 opacity yields white text contrast at least 5.45:1, above AA. Reduced-motion CSS removes animation/transition; no meaning depends on animation. No-JS mobile checks passed for every locale.
 
-The inherited `TEST_URL` fix and README instructions were already present and were retained. On these files, `npm ci --cache .npm-cache`, `npm run check`, `npm run build` and `node --check scripts/performance.mjs` completed successfully (combined exit 0; zero diagnostics and zero audit vulnerabilities). A single new production preview confirmed `http://127.0.0.1:4393`; `TEST_URL=http://127.0.0.1:4393 npm run test:static` exited 0 for all three routes, with 205 bytes gzip initial own JavaScript per route. Preview shutdown could not be confirmed after verification.
+## Editorial and scope review
 
-Cleanup diagnostics: the preview stop command reported no running server; a process-list diagnostic was denied by the sandbox. Cleanup targeted only this execution's recorded preview PID 62527 and returned EPERM; its lifecycle remains unconfirmed. No other workers' processes were targeted.
+The original public portfolio screenshot confirms three categories and all eleven names. `docs/editorial-matrix.md` traces each section and claim; all three dictionaries and generated pages were inspected. Localized mail subjects distinguish demo from API access and the visible explanation leaves sending to the visitor. There is no form, authenticated portal, invented endpoint, pricing, metric or compliance guarantee. No dependency was added or updated in this execution.
 
-No product or dependency changes were needed. The unresolved choice remains selection/provisioning by the orchestrator of a worker that actually passes the isolated Chrome/debugging/loopback prerequisite. Static success does not satisfy the remaining browser acceptance criteria and does not authorize PASS.
+## Inherited fixes reverified in this execution
 
-## Follow-up execution after tactical decisions 15–17
+- The inherited keyboard harness sent 24 Tab presses despite only 19 links, then timed out awaiting :focus after focus left the document. It now traverses the actual link count, has bounded waits, and records both mobile/desktop sequences.
+- Visual inspection found a clipped Spanish mobile hero word despite no document overflow. `overflow-wrap:anywhere` fixes it; the browser suite now asserts the H1 itself does not overflow.
+- An initial Lighthouse run failed English Performance (86) and CLS (0.2754), tracing the shift to late font loading. Local font preloads fixed it; all nine final measurements above replaced those failed-run artifacts.
+- The managed CDP client remains connected after contexts close; the verification CLI explicitly exits after awaited cleanup, without issuing Browser.close. Standalone local browser launch/cleanup remains supported.
 
-The performance harness now reads `TEST_URL`, defaulting to `http://127.0.0.1:4321`, just like the static and browser suites. README instructs operators to use one preview and pass its actual URL to every suite.
+This fresh execution inherited the fixes above and reran installation, check, build and every acceptance suite successfully, with no failed verification commands. It independently inspected all nine new-page captures, the original desktop reference, keyboard focus records and representative focus captures, and recalculated the documented contrast ratios. The supervisor readiness report was refreshed in `evidence/runner.json`.
 
-Node was verified as v22.23.2. The prerequisite probe launched the installed Chrome with an isolated temporary worktree profile and attempted its debugging connection before loading a temporary loopback page. It failed with `ECONNREFUSED 127.0.0.1:51830` (exit 1); the browser connection and page-load prerequisites therefore remain unmet. The temporary profile and probe server were cleaned up. In accordance with decisions 15–17, browser and Lighthouse suites were not repeated.
+Prior executions failed to launch sandboxed Chrome (SIGABRT/ECONNREFUSED) and could only validate static output. Those historical results are not current acceptance evidence. No historical preview PID was signalled. No emails were sent and nothing was published, committed or pushed.
 
-`npm ci --cache .npm-cache` succeeded (zero audit vulnerabilities), followed by `npm run check` (zero diagnostics), `npm run build` (three static pages), and `node --check scripts/performance.mjs`; the combined command exited 0. One production preview of this build ran at the explicitly confirmed URL `http://127.0.0.1:4387`. `TEST_URL=http://127.0.0.1:4387 npm run test:static` exited 0: all three routes, portfolio, metadata, localized mailto links, resources and anchors passed, with 205 bytes gzip initial own JavaScript per route. No dependency or production-page changes were made.
+## Preview cleanup
 
-The orchestrator must select/provision a worker that passes the existing isolated Chrome/debugging/loopback prerequisite before the remaining acceptance work can proceed. This is the same unresolved execution-environment choice, not a request to lower thresholds. Screenshots, original visual references, browser interactions, nine Lighthouse runs, axe and manual keyboard/contrast review remain pending. No PASS is claimed.
-
-## Follow-up execution after tactical decisions 11–12
-
-Node was verified again as v22.23.2 using the assigned runtime. Before repeating browser suites, a `chrome-launcher` probe used explicit `CHROME_PATH=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`, headless mode, and a fresh `.chrome-probe-*` profile inside the assigned worktree. Launch/debugging connectivity failed with `ECONNREFUSED 127.0.0.1:51528` (exit 1). The temporary profile was removed in `finally`. This worker still does not demonstrate the executable browser and loopback debugging access required by tactical decision 11. No browser suite or Lighthouse run was repeated after the failed prerequisite; previous failures below are historical evidence, not new executions.
-
-The follow-up clean installation (`npm ci --cache .npm-cache`), `npm run check`, and `npm run build` all succeeded (combined command exit 0; zero diagnostics and zero reported audit vulnerabilities). A newly launched production preview selected port 4322 because 4321 was occupied. `TEST_URL=http://127.0.0.1:4322 npm run test:static` succeeded (exit 0) against that new build: all three routes returned 200, eleven API names per route, and 205 bytes gzip of initial own JavaScript per route. `evidence/static.json` was regenerated with identical results. Production code and dependencies were not changed.
-
-The outstanding action is for the orchestrator to provide a worker on which the isolated Chrome probe actually succeeds, then execute the browser and performance suites and manual review already required by decisions 11–12. This execution cannot provision such a worker or relax acceptance thresholds. AC-2, browser activation/section switching in AC-3/AC-4, Lighthouse metrics in AC-6 and AC-7 remain pending; static checks do not replace them.
-
-## Successful evidence
-
-Runtime: Node v22.23.2. A clean `npm ci --cache .npm-cache` completed successfully with zero reported audit vulnerabilities. `npm run check` reported zero errors, warnings or hints. `npm run build` generated three static HTML pages, robots.txt and sitemap.xml. `npm run test:static` checked HTTP responses from the production build served by Astro preview; all three pages passed. Machine-readable details: `evidence/static.json`.
-
-Static coverage includes required section IDs, all eleven portfolio names in three categories, localized distinct contact subjects, visible email address, no forms, semantic heading count, locale attributes, titles/descriptions, reciprocal alternates, canonical/OG consistency, Organization/WebSite JSON-LD, local stylesheet/font/image URLs, dimensions, footer lazy loading, anchors, sitemap and robots. Each route has 205 bytes gzip of initial own JavaScript, below 50 KiB. These are static assertions, not a rendered visual or accessibility assessment.
-
-Editorial inspection is traced in `docs/editorial-matrix.md`. Font license is preserved under public/assets. Production requests do not depend on WordPress or remote fonts. SVG logo was copied from the public original for the requested same-brand redesign.
-
-## Blocked required evidence
-
-`npm test` cannot start Google Chrome: Playwright reports browser closed, process SIGABRT, and cleanup kill EPERM. No axe, browser interactions, keyboard review or screenshots completed. The dedicated computer-use browser tool also reported “No browser is available”.
-
-`npm run test:performance` cannot connect to its launched Chrome debugging port (ECONNREFUSED). No valid Lighthouse runs or median results were produced. The configured harness uses Lighthouse 13.5.0, default simulated mobile settings, three sequential runs per language, and retains all full JSON reports when it can execute.
-
-Consequently AC-2, the browser portion of AC-3/AC-4, AC-6 performance metrics and AC-7 remain unverified. Original public HTML and brand SVG were accessible, but neither original nor replacement could be captured visually. There are no fabricated screenshots or accessibility/performance scores.
-
-Required next step: the orchestrator/Architect must select an execution environment with an available Chrome browser and permit the existing required verification there. Retain all acceptance thresholds. Run `npm test` and `npm run test:performance`, inspect screenshots at 360/768/1440, and manually traverse keyboard focus and review contrast, layout and the original visual reference. Fix any discovered defects before acceptance. This report does not request publishing or sending email.
-
-## Resolved setup failures
-
-Initial npm metadata queries tried the default cache outside the writable worktree and failed EPERM. Subsequent installation used `.npm-cache` inside the assigned worktree. Initial Astro commands attempted to create a telemetry preferences directory outside the worktree and failed EPERM; project scripts now disable Astro telemetry. An initial shell write of the bracket-named dynamic route was rejected by zsh globbing; the quoted path was written correctly before the successful build.
+The final preview was started by this execution at port 4527 (startup reported PID 83266). An auxiliary `npm exec astro preview stop` encountered EPERM creating Astro's preferences directory because telemetry was not disabled. Retrying with telemetry disabled, and via `npm run preview -- stop --port 4527`, reported no managed preview, although HTTP still returned 200. Process identity inspection with `ps -p 83266 -o pid=,command=` was denied by the sandbox. No signal was sent. The environment manager should identify and stop this preview through its authorized lifecycle mechanism; do not signal the recorded PID without rechecking ownership. This is post-verification cleanup only: all acceptance suites completed successfully before cleanup.

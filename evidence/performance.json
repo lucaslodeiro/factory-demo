@@ -1,0 +1,98 @@
+[
+  {
+    "path": "/",
+    "runs": [
+      {
+        "performance": 100,
+        "lcp": 1052.069,
+        "cls": 0,
+        "version": "13.5.0"
+      },
+      {
+        "performance": 100,
+        "lcp": 1053.2114,
+        "cls": 0,
+        "version": "13.5.0"
+      },
+      {
+        "performance": 100,
+        "lcp": 1054.5546,
+        "cls": 0,
+        "version": "13.5.0"
+      }
+    ],
+    "median": {
+      "performance": 100,
+      "lcp": 1053.2114,
+      "cls": 0
+    }
+  },
+  {
+    "path": "/en/",
+    "runs": [
+      {
+        "performance": 100,
+        "lcp": 1052.1582,
+        "cls": 0,
+        "version": "13.5.0"
+      },
+      {
+        "performance": 100,
+        "lcp": 1053.6656,
+        "cls": 0,
+        "version": "13.5.0"
+      },
+      {
+        "performance": 100,
+        "lcp": 1053.5282,
+        "cls": 0,
+        "version": "13.5.0"
+      }
+    ],
+    "median": {
+      "performance": 100,
+      "lcp": 1053.5282,
+      "cls": 0
+    }
+  },
+  {
+    "path": "/pt/",
+    "runs": [
+      {
+        "performance": 100,
+        "lcp": 1054.5556,
+        "cls": 0,
+        "version": "13.5.0"
+      },
+      {
+        "performance": 100,
+        "lcp": 1057.496,
+        "cls": 0,
+        "version": "13.5.0"
+      },
+      {
+        "performance": 100,
+        "lcp": 1053.3003,
+        "cls": 0,
+        "version": "13.5.0"
+      }
+    ],
+    "median": {
+      "performance": 100,
+      "lcp": 1054.5556,
+      "cls": 0
+    }
+  },
+  {
+    "path": "index.html",
+    "initialJavaScriptGzipBytes": 205
+  },
+  {
+    "path": "en/index.html",
+    "initialJavaScriptGzipBytes": 205
+  },
+  {
+    "path": "pt/index.html",
+    "initialJavaScriptGzipBytes": 205
+  }
+]

@@ -3,6 +3,8 @@ import { content, languages, paths, apiNames, type Language } from '../data/cont
 import '@fontsource/space-grotesk/latin-400.css';
 import '@fontsource/space-grotesk/latin-500.css';
 import '../styles/global.css';
+import regularFont from '@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2?url';
+import mediumFont from '@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2?url';
 interface Props { lang: Language }
 const { lang } = Astro.props;
 const t = content[lang];
@@ -16,6 +18,8 @@ const schema = { '@context': 'https://schema.org', '@graph': [{ '@type': 'Organi
 <html lang={lang}>
 <head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width" />
+<link rel="preload" href={regularFont} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={mediumFont} as="font" type="font/woff2" crossorigin />
 <title>{t.title}</title><meta name="description" content={t.description} />
 <link rel="canonical" href={url} />
 {languages.map(l => <link rel="alternate" hreflang={l} href={new URL(paths[l], base).href} />)}

@@ -1,0 +1,551 @@
+[
+  {
+    "lang": "es",
+    "width": 360,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "es",
+    "width": 768,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "es",
+    "width": 1440,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "es",
+    "width": 360,
+    "keyboard": [
+      {
+        "text": "Saltar al contenido",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      },
+      {
+        "text": "Desarrolladores",
+        "outline": "solid"
+      },
+      {
+        "text": "Telcos",
+        "outline": "solid"
+      },
+      {
+        "text": "APIs",
+        "outline": "solid"
+      },
+      {
+        "text": "Plataforma",
+        "outline": "solid"
+      },
+      {
+        "text": "Nosotros y contacto",
+        "outline": "solid"
+      },
+      {
+        "text": "ES",
+        "outline": "solid"
+      },
+      {
+        "text": "EN",
+        "outline": "solid"
+      },
+      {
+        "text": "PT",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acceso a las APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar una demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Desarrolladores ↓",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acceso a las APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar una demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acceso a las APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar una demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "info@openxpand.com",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      }
+    ]
+  },
+  {
+    "lang": "es",
+    "width": 1440,
+    "keyboard": [
+      {
+        "text": "Saltar al contenido",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      },
+      {
+        "text": "Desarrolladores",
+        "outline": "solid"
+      },
+      {
+        "text": "Telcos",
+        "outline": "solid"
+      },
+      {
+        "text": "APIs",
+        "outline": "solid"
+      },
+      {
+        "text": "Plataforma",
+        "outline": "solid"
+      },
+      {
+        "text": "Nosotros y contacto",
+        "outline": "solid"
+      },
+      {
+        "text": "ES",
+        "outline": "solid"
+      },
+      {
+        "text": "EN",
+        "outline": "solid"
+      },
+      {
+        "text": "PT",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acceso a las APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar una demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Desarrolladores ↓",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acceso a las APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar una demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acceso a las APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar una demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "info@openxpand.com",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 360,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "en",
+    "width": 360,
+    "keyboard": [
+      {
+        "text": "Skip to content",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      },
+      {
+        "text": "Developers",
+        "outline": "solid"
+      },
+      {
+        "text": "Telcos",
+        "outline": "solid"
+      },
+      {
+        "text": "APIs",
+        "outline": "solid"
+      },
+      {
+        "text": "Platform",
+        "outline": "solid"
+      },
+      {
+        "text": "About and contact",
+        "outline": "solid"
+      },
+      {
+        "text": "ES",
+        "outline": "solid"
+      },
+      {
+        "text": "EN",
+        "outline": "solid"
+      },
+      {
+        "text": "PT",
+        "outline": "solid"
+      },
+      {
+        "text": "Request API access ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request a demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Developers ↓",
+        "outline": "solid"
+      },
+      {
+        "text": "Request API access ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request a demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request API access ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request a demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "info@openxpand.com",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "keyboard": [
+      {
+        "text": "Skip to content",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      },
+      {
+        "text": "Developers",
+        "outline": "solid"
+      },
+      {
+        "text": "Telcos",
+        "outline": "solid"
+      },
+      {
+        "text": "APIs",
+        "outline": "solid"
+      },
+      {
+        "text": "Platform",
+        "outline": "solid"
+      },
+      {
+        "text": "About and contact",
+        "outline": "solid"
+      },
+      {
+        "text": "ES",
+        "outline": "solid"
+      },
+      {
+        "text": "EN",
+        "outline": "solid"
+      },
+      {
+        "text": "PT",
+        "outline": "solid"
+      },
+      {
+        "text": "Request API access ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request a demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Developers ↓",
+        "outline": "solid"
+      },
+      {
+        "text": "Request API access ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request a demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request API access ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Request a demo ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "info@openxpand.com",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      }
+    ]
+  },
+  {
+    "lang": "pt",
+    "width": 360,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "pt",
+    "width": 768,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "pt",
+    "width": 1440,
+    "axeViolations": 0,
+    "horizontalOverflow": false
+  },
+  {
+    "lang": "pt",
+    "width": 360,
+    "keyboard": [
+      {
+        "text": "Saltar para o conteúdo",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      },
+      {
+        "text": "Programadores",
+        "outline": "solid"
+      },
+      {
+        "text": "Telcos",
+        "outline": "solid"
+      },
+      {
+        "text": "APIs",
+        "outline": "solid"
+      },
+      {
+        "text": "Plataforma",
+        "outline": "solid"
+      },
+      {
+        "text": "Sobre nós e contacto",
+        "outline": "solid"
+      },
+      {
+        "text": "ES",
+        "outline": "solid"
+      },
+      {
+        "text": "EN",
+        "outline": "solid"
+      },
+      {
+        "text": "PT",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acesso às APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar uma demonstração ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Programadores ↓",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acesso às APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar uma demonstração ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acesso às APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar uma demonstração ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "info@openxpand.com",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      }
+    ]
+  },
+  {
+    "lang": "pt",
+    "width": 1440,
+    "keyboard": [
+      {
+        "text": "Saltar para o conteúdo",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      },
+      {
+        "text": "Programadores",
+        "outline": "solid"
+      },
+      {
+        "text": "Telcos",
+        "outline": "solid"
+      },
+      {
+        "text": "APIs",
+        "outline": "solid"
+      },
+      {
+        "text": "Plataforma",
+        "outline": "solid"
+      },
+      {
+        "text": "Sobre nós e contacto",
+        "outline": "solid"
+      },
+      {
+        "text": "ES",
+        "outline": "solid"
+      },
+      {
+        "text": "EN",
+        "outline": "solid"
+      },
+      {
+        "text": "PT",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acesso às APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar uma demonstração ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Programadores ↓",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acesso às APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar uma demonstração ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar acesso às APIs ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "Solicitar uma demonstração ↗",
+        "outline": "solid"
+      },
+      {
+        "text": "info@openxpand.com",
+        "outline": "solid"
+      },
+      {
+        "text": "OpenXpand",
+        "outline": "solid"
+      }
+    ]
+  },
+  {
+    "originalReference": "captured"
+  }
+]

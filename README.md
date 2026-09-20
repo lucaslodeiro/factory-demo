@@ -23,7 +23,7 @@ npm test
 npm run test:performance
 ```
 
-Tests use local Google Chrome on macOS by default. Set `CHROME_PATH` to a Chrome/Chromium executable on other systems. The test suite does not send email. `npm test` checks built HTML, metadata, portfolio, assets, anchors, CTA activation with prevented default, language switching, no-JavaScript navigation, keyboard focus, responsive overflow and axe at 360, 768 and 1440 px. Screenshots and machine-readable reports go to `evidence/`. Performance runs nine sequential Lighthouse mobile measurements (three per locale); JSON reports contain the complete Lighthouse version and default simulated mobile configuration. Tests assert median score ≥90, LCP ≤2500 ms, CLS ≤0.1 and initial own JS ≤50 KiB gzip. Run against an otherwise idle local machine.
+When a Factory runner is supplied, `FACTORY_BROWSER_CDP_URL` connects Playwright to its isolated browser and `FACTORY_BROWSER_DEBUG_PORT` selects the same browser for Lighthouse. Read `FACTORY_BROWSER_REPORT` and confirm readiness first. Tests close their own contexts; the supervisor owns browser lifecycle. Without these variables, tests use local Google Chrome on macOS by default. Set `CHROME_PATH` to a Chrome/Chromium executable on other systems. The test suite does not send email. `npm test` checks built HTML, metadata, portfolio, assets, anchors, CTA activation with prevented default, language switching, no-JavaScript navigation, keyboard focus, responsive overflow and axe at 360, 768 and 1440 px. Screenshots and machine-readable reports go to `evidence/`. Performance runs nine sequential Lighthouse mobile measurements (three per locale); JSON reports contain the complete Lighthouse version and default simulated mobile configuration. Tests assert median score ≥90, LCP ≤2500 ms, CLS ≤0.1 and initial own JS ≤50 KiB gzip. Run against an otherwise idle local machine.
 
 `npm run dev` starts development. Telemetry is disabled in all Astro scripts. Scripts use POSIX environment assignments; Windows users can run in WSL.
 
@@ -44,4 +44,4 @@ Deployment, domain modification, historical redirects and search console setup a
 
 ## Current verification status
 
-See `docs/verification.md`. Static checks have passed. Browser-based acceptance remains blocked in the restricted execution environment; do not treat the implementation as accepted until screenshots, manual keyboard/contrast review, axe and Lighthouse have been completed.
+See `docs/verification.md`. Results and retained browser, accessibility, visual and performance evidence are recorded there. Re-run all checks against the final build before accepting changes.
