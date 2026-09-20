@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "foreground": "ffffff",
+      "background": "3d00a9",
+      "ratio": 11.855468290586963
+    },
+    {
+      "foreground": "ffffff",
+      "background": "41266f",
+      "ratio": 12.127874870467146
+    },
+    {
+      "foreground": "ffc6ba",
+      "background": "41266f",
+      "ratio": 8.107581076359573
+    },
+    {
+      "foreground": "ece5fa",
+      "background": "41266f",
+      "ratio": 9.907159044011202
+    },
+    {
+      "foreground": "282828",
+      "background": "e1d8f1",
+      "ratio": 10.737323977942964
+    },
+    {
+      "foreground": "282828",
+      "background": "f1d5cb",
+      "ratio": 10.61529333865087
+    },
+    {
+      "foreground": "271442",
+      "background": "e89a8f",
+      "ratio": 7.470390665843019
+    }
+  ],
+  "whiteOnConservativeOrbitComposite": 5.458534785316964,
+  "axes": [
+    {
+      "file": "axe-en-1440.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-en-360.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-en-768.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-es-1440.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-es-360.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-es-768.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-pt-1440.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-pt-360.json",
+      "violations": 0
+    },
+    {
+      "file": "axe-pt-768.json",
+      "violations": 0
+    }
+  ]
+}
