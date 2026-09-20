@@ -4,26 +4,26 @@
     "runs": [
       {
         "performance": 100,
-        "lcp": 1052.9986,
+        "lcp": 1052.7186,
         "cls": 0,
         "version": "13.5.0"
       },
       {
         "performance": 100,
-        "lcp": 1054.351,
+        "lcp": 1053.1531,
         "cls": 0,
         "version": "13.5.0"
       },
       {
         "performance": 100,
-        "lcp": 1066.673,
+        "lcp": 1052.0788,
         "cls": 0,
         "version": "13.5.0"
       }
     ],
     "median": {
       "performance": 100,
-      "lcp": 1054.351,
+      "lcp": 1052.7186,
       "cls": 0
     }
   },
@@ -32,26 +32,26 @@
     "runs": [
       {
         "performance": 100,
-        "lcp": 1054.3053,
+        "lcp": 1053.7301,
         "cls": 0,
         "version": "13.5.0"
       },
       {
         "performance": 100,
-        "lcp": 1055.5277,
+        "lcp": 1055.4147,
         "cls": 0,
         "version": "13.5.0"
       },
       {
         "performance": 100,
-        "lcp": 1052.0064,
+        "lcp": 1053.2161,
         "cls": 0,
         "version": "13.5.0"
       }
     ],
     "median": {
       "performance": 100,
-      "lcp": 1054.3053,
+      "lcp": 1053.7301,
       "cls": 0
     }
   },
@@ -60,26 +60,26 @@
     "runs": [
       {
         "performance": 100,
-        "lcp": 1052.7331,
+        "lcp": 1052.476,
         "cls": 0,
         "version": "13.5.0"
       },
       {
         "performance": 100,
-        "lcp": 1055.2845,
+        "lcp": 1054.8783,
         "cls": 0,
         "version": "13.5.0"
       },
       {
         "performance": 100,
-        "lcp": 1051.928,
+        "lcp": 1052.3685,
         "cls": 0,
         "version": "13.5.0"
       }
     ],
     "median": {
       "performance": 100,
-      "lcp": 1052.7331,
+      "lcp": 1052.476,
       "cls": 0
     }
   },

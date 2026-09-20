@@ -1,0 +1,55 @@
+{
+  "checks": [
+    {
+      "foreground": "ffffff",
+      "background": "3d00a9",
+      "ratio": 11.855468290586963
+    },
+    {
+      "foreground": "ffffff",
+      "background": "41266f",
+      "ratio": 12.127874870467146
+    },
+    {
+      "foreground": "ffc6ba",
+      "background": "41266f",
+      "ratio": 8.107581076359573
+    },
+    {
+      "foreground": "ece5fa",
+      "background": "41266f",
+      "ratio": 9.907159044011202
+    },
+    {
+      "foreground": "282828",
+      "background": "e1d8f1",
+      "ratio": 10.737323977942964
+    },
+    {
+      "foreground": "282828",
+      "background": "f1d5cb",
+      "ratio": 10.61529333865087
+    },
+    {
+      "foreground": "271442",
+      "background": "e89a8f",
+      "ratio": 7.470390665843019
+    },
+    {
+      "foreground": "3d00a9",
+      "background": "f1d5cb",
+      "ratio": 8.53605782886873
+    },
+    {
+      "foreground": "e1d9eb",
+      "background": "271442",
+      "ratio": 12.115650416157841
+    },
+    {
+      "foreground": "ffffff",
+      "background": "conservative full-opacity orbit composite",
+      "ratio": 5.458534785316964
+    }
+  ],
+  "keyboardReview": "19 links per locale at 360 and 1440; skip first, header, hero, audience CTAs, contact, footer; focus captures inspected"
+}

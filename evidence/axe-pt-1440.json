@@ -13,8 +13,8 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-09-20T21:14:27.199Z",
-  "url": "http://127.0.0.1:4739/pt/",
+  "timestamp": "2026-09-20T21:17:41.269Z",
+  "url": "http://127.0.0.1:4741/pt/",
   "toolOptions": {
     "runOnly": {
       "type": "tag",
@@ -1014,7 +1014,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ]
@@ -1054,7 +1054,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ]
@@ -1094,7 +1094,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ]
@@ -1264,7 +1264,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ]
@@ -1282,7 +1282,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ]
@@ -1300,7 +1300,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ]
@@ -2188,7 +2188,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ]
@@ -2206,7 +2206,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ]
@@ -2224,7 +2224,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ]
@@ -2406,7 +2406,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ]
@@ -2438,7 +2438,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ]
@@ -2470,7 +2470,7 @@
           ],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ]
@@ -2624,7 +2624,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ]
@@ -2642,7 +2642,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ]
@@ -2660,7 +2660,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ]
@@ -4945,7 +4945,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ]
@@ -4978,7 +4978,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ]
@@ -5011,7 +5011,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ]
@@ -5816,7 +5816,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ]
@@ -5834,7 +5834,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ]
@@ -5852,7 +5852,7 @@
             }
           ],
           "impact": null,
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ]
@@ -5924,7 +5924,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<a href=\"http://127.0.0.1:4739/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/\" lang=\"es\" hreflang=\"es\" data-language=\"\" aria-label=\"Español\">ES</a>",
           "target": [
             ":root"
           ],
@@ -5949,7 +5949,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<a href=\"http://127.0.0.1:4739/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/en/\" lang=\"en\" hreflang=\"en\" data-language=\"\" aria-label=\"English\">EN</a>",
           "target": [
             "a[lang=\"en\"]"
           ],
@@ -5974,7 +5974,7 @@
           "all": [],
           "none": [],
           "impact": "serious",
-          "html": "<a href=\"http://127.0.0.1:4739/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
+          "html": "<a href=\"http://127.0.0.1:4741/pt/\" lang=\"pt\" hreflang=\"pt\" data-language=\"\" aria-label=\"Português\" aria-current=\"page\">PT</a>",
           "target": [
             "a[aria-label=\"Português\"]"
           ],
