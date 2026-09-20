@@ -1,3 +1,7 @@
+# Current human review preview
+
+The latest Builder execution leaves **http://127.0.0.1:4739/** running for the requested human review before a PR. See [current run](../evidence/local-preview.md). Node 22.23.2 clean install, check, build, static, browser and performance suites all succeeded. /: Performance 100, LCP 1054.351 ms, CLS 0; /en/: Performance 100, LCP 1054.3053 ms, CLS 0; /pt/: Performance 100, LCP 1052.7331 ms, CLS 0. Reports and captures in evidence/ were refreshed. No production code or dependencies changed. The records below describe earlier executions and their own preview ports.
+
 # Verification report — 2026-09-20
 
 ## Final build verification

@@ -1,1 +1,13 @@
-{"status":"ready","endpoint":"http://127.0.0.1:62089","port":62089,"browser":"Chrome/153.0.8010.53","node":"v22.23.2","checkedAt":"2026-09-20T20:06:07.133Z","checks":["browser-start","debugging-connection","loopback-page"]}
+{
+  "status": "ready",
+  "endpoint": "http://127.0.0.1:52648",
+  "port": 52648,
+  "browser": "Chrome/153.0.8010.53",
+  "node": "v22.23.2",
+  "checkedAt": "2026-09-20T21:13:24.955Z",
+  "checks": [
+    "browser-start",
+    "debugging-connection",
+    "loopback-page"
+  ]
+}
