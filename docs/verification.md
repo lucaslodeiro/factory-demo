@@ -1,5 +1,25 @@
 # Verification report — 2026-09-20
 
+## Current execution — human instruction 33
+
+Node reports v22.23.2. Before running acceptance suites, a Node ESM probe created an HTTP server on `127.0.0.1` with an ephemeral port and called `chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--remote-debugging-port=0'],timeout:15000})` from Playwright. Playwright supplied an isolated temporary profile. The command (`node --input-type=module`, with the prescribed Node PATH) exited 1: `browserType.launch: Failed to launch the browser process`; Chrome exited with `signal=SIGABRT`. The browser never reached the debugging/page-load checks. Playwright reported temporary-directory cleanup completed, and the probe closed its own HTTP server.
+
+The alternative computer-use runner was also checked: `cua.getState()` returned no browser providers, and `cua.createBrowserTab('chrome','about:blank',{sessionName:'🔎 Portal verification'})` returned `Browser is not available: chrome`. This execution has approval policy `never`, so there is no permitted escalation mechanism. No security restrictions were bypassed, no existing browser profiles were opened, and no historical preview processes were signalled.
+
+Independent verification on the unchanged application succeeded:
+
+- `npm ci --cache .npm-cache --no-audit --no-fund`: exit 0, 388 packages installed; setup only, no audit claim.
+- `npm run check && npm run build`: exit 0, zero errors/warnings/hints and three static pages generated.
+- `TEST_URL=http://127.0.0.1:4497 npm run test:static`: exit 0, all three routes and local resources passed; initial own JavaScript was 205 bytes gzip per route. `evidence/static.json` was regenerated with identical contents.
+
+The static test used one Astro production preview started via `preview({server:{host:'127.0.0.1',port:4497}})`. Its returned port confirmed the exact TEST_URL; `await server.stop()` completed in `finally`. This execution's preview was cleaned up successfully.
+
+AC-2, browser activation in AC-3, language/anchor interaction in AC-4, Lighthouse metrics in AC-6, and rendered/manual accessibility in AC-7 remain unverified. No browser acceptance suite, Lighthouse runs or screenshots are claimed. The editorial matrix and three dictionaries were inspected; no application or dependency changes were made.
+
+Outcome: **environment-blocked**, requiring a delivery `decision`/Failed result, not another architectural consultation. Before Retry, the environment operator must provide an authorized worker/runner that can launch isolated Chrome, connect to its debugging interface and load the worker's loopback page. Then run the existing browser suite, nine Lighthouse measurements and visual/keyboard/contrast review against one final-build preview with explicit TEST_URL. Existing acceptance thresholds remain unchanged.
+
+The sections below are historical execution records, not current validation or routing instructions.
+
 ## Latest assigned-worker prerequisite and verification
 
 The assigned worker again reports Node v22.23.2. A fresh isolated worktree Chrome profile, explicit installed `CHROME_PATH`, temporary loopback HTTP server and debugging connection probe failed with `ECONNREFUSED 127.0.0.1:52146` (exit 1). The profile and temporary server were cleaned up. Chrome never reached the page-load check. Decisions 15–17 therefore still block browser-suite and Lighthouse execution; neither was repeated, and no screenshots or manual visual/keyboard/contrast evidence was obtained.
