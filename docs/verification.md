@@ -1,5 +1,25 @@
 # Verification report — 2026-09-20
 
+## Latest assigned-worker prerequisite and verification
+
+The assigned worker again reports Node v22.23.2. A fresh isolated worktree Chrome profile, explicit installed `CHROME_PATH`, temporary loopback HTTP server and debugging connection probe failed with `ECONNREFUSED 127.0.0.1:52146` (exit 1). The profile and temporary server were cleaned up. Chrome never reached the page-load check. Decisions 15–17 therefore still block browser-suite and Lighthouse execution; neither was repeated, and no screenshots or manual visual/keyboard/contrast evidence was obtained.
+
+The inherited `TEST_URL` fix and README instructions were already present and were retained. On these files, `npm ci --cache .npm-cache`, `npm run check`, `npm run build` and `node --check scripts/performance.mjs` completed successfully (combined exit 0; zero diagnostics and zero audit vulnerabilities). A single new production preview confirmed `http://127.0.0.1:4393`; `TEST_URL=http://127.0.0.1:4393 npm run test:static` exited 0 for all three routes, with 205 bytes gzip initial own JavaScript per route. Preview shutdown could not be confirmed after verification.
+
+Cleanup diagnostics: the preview stop command reported no running server; a process-list diagnostic was denied by the sandbox. Cleanup targeted only this execution's recorded preview PID 62527 and returned EPERM; its lifecycle remains unconfirmed. No other workers' processes were targeted.
+
+No product or dependency changes were needed. The unresolved choice remains selection/provisioning by the orchestrator of a worker that actually passes the isolated Chrome/debugging/loopback prerequisite. Static success does not satisfy the remaining browser acceptance criteria and does not authorize PASS.
+
+## Follow-up execution after tactical decisions 15–17
+
+The performance harness now reads `TEST_URL`, defaulting to `http://127.0.0.1:4321`, just like the static and browser suites. README instructs operators to use one preview and pass its actual URL to every suite.
+
+Node was verified as v22.23.2. The prerequisite probe launched the installed Chrome with an isolated temporary worktree profile and attempted its debugging connection before loading a temporary loopback page. It failed with `ECONNREFUSED 127.0.0.1:51830` (exit 1); the browser connection and page-load prerequisites therefore remain unmet. The temporary profile and probe server were cleaned up. In accordance with decisions 15–17, browser and Lighthouse suites were not repeated.
+
+`npm ci --cache .npm-cache` succeeded (zero audit vulnerabilities), followed by `npm run check` (zero diagnostics), `npm run build` (three static pages), and `node --check scripts/performance.mjs`; the combined command exited 0. One production preview of this build ran at the explicitly confirmed URL `http://127.0.0.1:4387`. `TEST_URL=http://127.0.0.1:4387 npm run test:static` exited 0: all three routes, portfolio, metadata, localized mailto links, resources and anchors passed, with 205 bytes gzip initial own JavaScript per route. No dependency or production-page changes were made.
+
+The orchestrator must select/provision a worker that passes the existing isolated Chrome/debugging/loopback prerequisite before the remaining acceptance work can proceed. This is the same unresolved execution-environment choice, not a request to lower thresholds. Screenshots, original visual references, browser interactions, nine Lighthouse runs, axe and manual keyboard/contrast review remain pending. No PASS is claimed.
+
 ## Follow-up execution after tactical decisions 11–12
 
 Node was verified again as v22.23.2 using the assigned runtime. Before repeating browser suites, a `chrome-launcher` probe used explicit `CHROME_PATH=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`, headless mode, and a fresh `.chrome-probe-*` profile inside the assigned worktree. Launch/debugging connectivity failed with `ECONNREFUSED 127.0.0.1:51528` (exit 1). The temporary profile was removed in `finally`. This worker still does not demonstrate the executable browser and loopback debugging access required by tactical decision 11. No browser suite or Lighthouse run was repeated after the failed prerequisite; previous failures below are historical evidence, not new executions.

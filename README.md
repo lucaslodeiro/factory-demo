@@ -14,9 +14,10 @@ npm run build
 npm run preview
 ```
 
-The preview serves the generated `dist/` files at http://127.0.0.1:4321. In another terminal run:
+The preview serves the generated `dist/` files, normally at http://127.0.0.1:4321. Read the actual URL printed by preview: if the port is occupied, Astro may select another one. Keep this single preview running and pass its actual URL to all three suites. In another terminal run (adjust the URL if needed):
 
 ```sh
+export TEST_URL=http://127.0.0.1:4321
 npm run test:static
 npm test
 npm run test:performance
