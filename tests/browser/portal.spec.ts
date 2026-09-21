@@ -41,3 +41,19 @@ test('keyboard reaches every main control with visible focus',async({page})=>{
   expect(seen.size,route).toBe(count);
  }
 });
+
+for(const locale of ['es','en','pt'])for(const intent of ['apis','demo'])test(`mail draft ${locale}/${intent}: unconfigured delivery`,async({page})=>{
+ await page.route('https://challenges.cloudflare.com/**',r=>r.abort());
+ await page.route('**/api/contact',r=>r.fulfill({status:200,contentType:'application/json',body:'{"fallback":"mailto"}'}));
+ await page.goto(`/${locale}/contact/${intent}/?api=sim-swap`);
+ // Prevent launching a native mail application while inspecting the actual generated link.
+ await page.locator('#mail-fallback').evaluate(el=>el.addEventListener('click',e=>e.preventDefault()));
+ await page.locator('#name').fill('Synthetic Tester');await page.locator('#email').fill('synthetic@example.test');await page.locator('#company').fill('Test & Co');await page.locator('#message').fill('Accents: á & ? #\nSecond line');
+ await page.locator('button[type=submit]').click();
+ const link=page.locator('#mail-fallback');await expect(link).toBeVisible();
+ const href=await link.getAttribute('href');const url=new URL(href!);expect(url.protocol).toBe('mailto:');expect(url.pathname).toBe('info@openxpand.com');
+ const body=url.searchParams.get('body')!;for(const value of ['Synthetic Tester','synthetic@example.test','Test & Co','Accents: á & ? #\nSecond line','sim-swap',locale])expect(body).toContain(value);
+ expect(url.searchParams.get('subject')).toContain(intent==='apis'?{es:'Solicitar acceso',en:'Request API',pt:'Solicitar acesso'}[locale]!:{es:'Conversemos',en:'talk',pt:'conversar'}[locale]!);
+ await expect(page.locator('#status')).toContainText({es:'Todavía no se envió',en:'It has not been sent',pt:'Ainda não foi enviado'}[locale]!);
+ await expect(page.locator('#message')).toHaveValue('Accents: á & ? #\nSecond line');await expect(page).toHaveURL(new RegExp(`/${locale}/contact/${intent}/\\?api=sim-swap$`));
+});

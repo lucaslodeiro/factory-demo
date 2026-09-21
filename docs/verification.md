@@ -1,43 +1,43 @@
 # Estado de verificación
 
-Verificación ejecutada el 21/09/2026 con Node 22.23.2 y Chrome 153.0.8010.53 administrado por Factory. La entrega permanece bloqueada por AC-6 y por la comprobación nativa de zoom de AC-10. No se desplegó ni se enviaron correos reales.
+Verificación del 21/09/2026 con Node 22.23.2 y Chrome 153.0.8010.53 de Factory. La instrucción humana de secuencia 7 autoriza el fallback mailto de AC-6 y exime las pruebas de AC-10. No se modificó la especificación aprobada. No se desplegó ni se enviaron correos reales.
 
-## Comandos y resultados actuales
+## Comandos y resultados
 
-- `npm ci --cache /tmp/openxpand-npm-cache`: instalación reproducible correcta, 401 paquetes; auditoría de instalación sin vulnerabilidades reportadas.
-- `npm run check`: exit 0; 26 archivos, sin errores, advertencias ni hints; paridad de tres idiomas y diez familias.
-- `npm test`: exit 0; 33 pruebas en dos archivos. Contrato cerrado, límites, antispam, Reply-To, destinatario fijo, escape, fallos, idempotencia y middleware 404.
-- `PUBLIC_SITE_ENV=production PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA npm run build`: exit 0; 55 páginas generadas, 54 páginas localizadas inspeccionadas sin JS. Metadatos, enlaces, JSON-LD, imágenes y regla 301 verificados. Máximo JS propio inicial: **1.212 bytes gzip**.
-- `npm run test:browser`: exit 0; **15 pruebas aprobadas**. Ambos formularios en es/en/pt, error/reintento, preservación de datos, estado pendiente, confirmación, API contextual, navegación equivalente, 404 y canonical. Nueve plantillas a 360/768/1440 px sin desbordamiento ni hallazgos axe graves/críticos. Tabulación completa y foco visible. Reflujo a 720×450 con tamaño raíz al 200 % y reduced-motion.
-- `npm run test:performance`: exit 0; 15 mediciones, tres por ruta con caché fría. Informes completos y resumen en `docs/evidence/lighthouse-*.json` y `docs/evidence/performance.json`.
+- Instalación reproducible: npm ci --cache /tmp/openxpand-npm-cache, exit 0; 401 paquetes, sin vulnerabilidades reportadas por npm.
+- npm run check: exit 0; 26 archivos sin errores, advertencias ni hints; paridad de traducciones y diez familias.
+- npm test: exit 0; 35 pruebas de validación, proveedores, fallback, idempotencia y middleware.
+- PUBLIC_SITE_ENV=production PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA npm run build: exit 0; 55 páginas, 54 páginas localizadas comprobadas sin JavaScript; máximo JS inicial propio de 1383 bytes gzip.
+- npm run test:browser -- --grep-invert 'responsive|200%|keyboard reaches': exit 0; 16 pruebas, con navegación en tres idiomas, ambos formularios, errores, reintento, doble clic, confirmación, API contextual, canonical, redirección raíz y seis variantes de borrador mailto.
 
-## Rendimiento
+## Correo autorizado
 
-Build estático de producción servido en `127.0.0.1:4321`, macOS arm64, Lighthouse móvil con throttling simulado predeterminado. Se usó el puerto CDP suministrado por Factory; no se lanzó ni cerró el navegador del supervisor.
+Cuando falta RESEND_API_KEY o MAIL_FROM, el servidor valida origen, tamaño, contrato y honeypot; responde con una indicación de fallback sin llamar a proveedores ni devolver datos personales. SITE_ORIGIN sigue siendo necesario. El token solo es obligatorio cuando el correo está configurado. El cliente genera un borrador para info@openxpand.com con intención, idioma, nombre, email, empresa, mensaje y API, codificados de forma segura. Conserva los campos, intenta abrir el cliente y ofrece un enlace explícito para reabrirlo. El estado localizado aclara que el usuario debe enviar el correo. El aviso de privacidad explica la intervención de su proveedor de correo.
 
-| Ruta | Mediana Performance | Mediana LCP | Mediana CLS |
-|---|---:|---:|---:|
-| `/es/` | 100 | 902 ms | 0 |
-| `/es/apis/` | 100 | 902 ms | 0 |
-| `/es/apis/sim-swap/` | 100 | 902 ms | 0 |
-| `/es/operators/` | 100 | 1.277 ms | 0 |
-| `/es/contact/apis/` | 100 | 922 ms | 0 |
-
-Contacto carga Turnstile real con su clave pública de pruebas: cuatro solicitudes externas registradas por medición, incluidos script e iframe con HTTP 200. Una solicitud auxiliar del desafío no completó (estado -1); queda visible en los informes. No se simularon ni excluyeron los scripts externos durante Lighthouse. Los ensayos funcionales sí simulan antispam/correo explícitamente. Repetir con la configuración operativa antes de publicar; estas mediciones no prueban recepción de correo.
+Las pruebas de navegador interceptaron la apertura nativa para inspeccionar el mailto real; no se afirma apertura de una aplicación nativa ni recepción de mensajes. Se requiere un cliente de correo configurado. La ruta de servidor configurada conserva Turnstile y Resend; sus errores no disparan el fallback para evitar duplicaciones tras respuestas inciertas. Las pruebas unitarias cubren ambos modos, y el backend local de navegador simula los proveedores.
 
 ## Continuidad visual
 
-Se inspeccionaron las ocho capturas existentes del portal original y del nuevo portal: portada, desarrolladores y operadores en escritorio/móvil. Conservan logo blanco, violeta, acento cálido y fotografías de ambas audiencias. Inventario, transformaciones y justificación de omisiones en `docs/assets.md`. No se modificó código visual durante esta ejecución.
+Se inspeccionaron las ocho capturas previas de docs/evidence: original, portada nueva, desarrolladores y operadores a 360/1440 px. Se conserva logo blanco, violeta dominante, acento cálido y las fotografías por audiencia. Las plantillas comparadas no cambiaron en esta ejecución. Procedencia y decisiones visuales en docs/assets.md. AC-10 no se ejecutó por exención humana; no se presenta como verificado.
 
-## Bloqueos para Retry
+## Entorno e incidentes resueltos
 
-1. **AC-6:** esta ejecución no recibió una allow-list de credenciales operativas, remitente verificado ni acceso autorizado a `info@openxpand.com`. No se intentó buscar secretos ni enviar mensajes con credenciales no autorizadas. Proporcionar configuración autorizada de Resend/Turnstile, dominio remitente verificado y capacidad autorizada de comprobar ambos mensajes recibidos. Ejecutar las dos intenciones con datos sintéticos y registrar evidencia redactada; el mock no satisface este criterio.
-2. **AC-10, zoom nativo:** pasaron axe, teclado y reflujo automatizado, pero no se ejecutó el zoom nativo del navegador al 200 %. La herramienta de UI devolvió `browsers: []`; el navegador aislado del supervisor solo está expuesto por CDP, sin una superficie nativa controlable. No se utilizó el perfil personal de Chrome. Habilitar controles nativos del navegador aislado o un runner autorizado que permita verificar ese zoom, y completar la comprobación antes de aprobar AC-10. La simulación de reflujo no se presenta como prueba de zoom nativo.
+El reporte del supervisor indicó ready y CDP funcionó. Se reutilizó el servidor de producción estática en 127.0.0.1:4321 después de verificar con lsof que su cwd era este worktree. El supervisor conserva el ciclo de vida del navegador.
 
-## Incidentes y límites
+El primer build encontró ENOTEMPTY en la caché Vite al correr junto a astro check. Se eliminó únicamente node_modules/.vite y se repitió el build en secuencia: exit 0. Un script auxiliar de edición por stdin falló antes de modificar archivos por codificación; se usó Node y la edición se completó. Ninguno constituye un bloqueo vigente.
 
-El bloqueo histórico de lanzamiento Chromium quedó resuelto mediante el navegador del supervisor: su reporte indicó `ready` y las conexiones CDP, pruebas y Lighthouse funcionaron. Las limitaciones históricas de caché npm y telemetría están resueltas por los comandos documentados.
+Las Functions y cabeceras en Cloudflare desplegado se comprobarán en el despliegue autorizado, fuera del alcance local. No se leyeron secretos ni se cambiaron cuentas, DNS o servicios externos.
 
-Un intento auxiliar de iniciar `npm run test:server` devolvió `EADDRINUSE` en 4321. Se comprobó mediante `lsof` que el servidor existente pertenece a este mismo worktree y se reutilizó para las verificaciones. No es un fallo de aceptación ni un bloqueo pendiente. El servidor lee el build actual desde `dist`.
+## Rendimiento del build actual
 
-La validación de cabeceras y Functions en infraestructura Cloudflare desplegada queda para el despliegue autorizado, fuera del alcance de esta implementación local. No se modificaron cuentas, DNS ni servicios externos.
+npm run test:performance: exit 0. Quince mediciones Lighthouse móvil con caché fría, throttling simulado predeterminado, macOS arm64 y puerto CDP de Factory.
+
+| Ruta | Mediana Performance | LCP (ms) | CLS |
+|---|---:|---:|---:|
+| /es/ | 100 | 901 | 0 |
+| /es/apis/ | 100 | 901 | 0 |
+| /es/apis/sim-swap/ | 100 | 902 | 0 |
+| /es/operators/ | 100 | 1277 | 0 |
+| /es/contact/apis/ | 100 | 901 | 0 |
+
+Informes completos en docs/evidence/lighthouse-*.json y resumen en performance.json. Contacto incluye el widget externo con clave pública de pruebas; las solicitudes externas y sus estados se registran por corrida. No se interceptaron durante Lighthouse. Repetir con configuración operativa antes de publicar; no es evidencia de recepción de correo.

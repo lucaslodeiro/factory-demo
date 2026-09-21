@@ -16,7 +16,7 @@ npm run build
 npm run dev
 ```
 
-`package-lock.json` fija las versiones. La telemetría de Astro está desactivada en los comandos del proyecto. El build por defecto es un preview no indexable y sin widget configurado: el formulario falla de forma visible y segura. `astro dev` y `astro preview` sirven el frontend; no ejecutan las Functions.
+`package-lock.json` fija las versiones. La telemetría de Astro está desactivada en los comandos del proyecto. El build por defecto es un preview no indexable y sin widget configurado: el servidor ofrece el fallback de correo cuando faltan RESEND_API_KEY o MAIL_FROM. SITE_ORIGIN debe estar configurado incluso en ese modo. `astro dev` y `astro preview` sirven el frontend; no ejecutan las Functions.
 
 Verificación de navegador con un build estático y backend **simulado exclusivamente en scripts/test-server.ts**:
 
@@ -45,7 +45,7 @@ Lighthouse ejecuta tres mediciones móviles con caché fría por ejecución: por
 - `src/data/i18n.ts`: todas las cadenas editoriales, de interfaz, accesibilidad y metadatos. Los nombres técnicos de las APIs se conservan.
 - `src/pages/[...route].astro`: generación estática de 18 rutas por idioma.
 - `src/components`, `src/layouts`, `src/styles`: plantillas y estilos compartidos.
-- `src/scripts/contact.ts`: validación y estados accesibles; API opcional por identificador; nunca datos personales en URL.
+- `src/scripts/contact.ts`: validación y estados accesibles; API opcional por identificador; nunca datos personales en URLs del portal; el borrador mailto autorizado contiene los datos para el cliente de correo.
 - `src/lib/contact.ts`: contrato cerrado, límites, antispam, correo e idempotencia.
 - `functions/api/contact.ts`: endpoint real; sin modo mock desplegable.
 - `functions/_middleware.ts`: fallback 404 localizado con estado HTTP 404.
@@ -76,9 +76,11 @@ Verificar en un preview autorizado la redirección 301, cabeceras CSP, 404 local
 
 Cuotas consultadas el 21/09/2026: [Resend Free](https://resend.com/pricing), 3.000 correos/mes y 100/día; [Pages Functions](https://developers.cloudflare.com/pages/functions/pricing/), cuota compartida de Workers Free de 100.000 solicitudes/día; [Turnstile Free](https://developers.cloudflare.com/turnstile/plans/), hasta 20 widgets y desafíos ilimitados. Las cuotas pueden cambiar: revisar en la cuenta antes del despliegue. Agotar correo debe producir error visible, nunca una confirmación falsa.
 
-## Verificación de correo real — requisito pendiente
+## Correo y fallback autorizado
 
-AC-6 no se satisface con el mock. Se necesitan secretos autorizados, dominio remitente verificado, widget operativo y acceso autorizado a `info@openxpand.com`. Sin esos elementos no se puede aprobar la entrega.
+La instrucción humana del 21/09/2026 autoriza el borrador mailto cuando el envío no está configurado. Si falta RESEND_API_KEY o MAIL_FROM, el endpoint valida origen, tamaño, campos y honeypot, no llama a proveedores y devuelve únicamente la indicación de fallback. El cliente abre un borrador dirigido a info@openxpand.com con intención, idioma, nombre, email, empresa, mensaje y API. Conserva los campos y ofrece un enlace para volver a abrirlo; aclara que el usuario debe enviar el correo. Requiere una aplicación de correo configurada. No se afirma recepción ni envío automático. Los fallos de un proveedor configurado NO activan fallback para evitar duplicaciones inciertas.
+
+Para habilitar y verificar correo automático se necesitan secretos autorizados, dominio remitente verificado, widget operativo y acceso autorizado al buzón. Comprobación operativa:
 
 1. En entorno operativo autorizado, enviar datos sintéticos por cada intención, con idiomas distintos y una API en la solicitud de acceso.
 2. Comprobar en el buzón receptor ambos mensajes y Reply-To, nombre, email, empresa, mensaje, intención, idioma y API.
@@ -86,3 +88,5 @@ AC-6 no se satisface con el mock. Se necesitan secretos autorizados, dominio rem
 4. Probar fallo de proveedor y reintento sin duplicar una aceptación anterior dentro de la ventana de idempotencia. Conservar evidencia redactada fuera de logs con datos personales.
 
 Ver `docs/assets.md`, `docs/redirects.md` y `docs/verification.md` para procedencia, migración y límites reales de validación.
+
+La misma instrucción humana exime la prueba de AC-10. Para ejecutar solo las pruebas requeridas en esta entrega: `npm run test:browser -- --grep-invert "responsive|200%|keyboard reaches"`. Las pruebas de accesibilidad existentes siguen disponibles.

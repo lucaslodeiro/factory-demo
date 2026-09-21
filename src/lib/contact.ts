@@ -1,7 +1,7 @@
 import { catalog, locales, type Locale, type Intent, type ApiId } from '../data/catalog';
 export interface Contact { intent:Intent; locale:Locale; name:string; email:string; company:string; message:string; api?:ApiId; token:string; website:string; requestId:string }
 export const limits = {name:100, email:254, company:160, message:5000} as const;
-export function validate(input: unknown): {data?: Contact; errors: string[]} {
+export function validate(input: unknown, requireToken = true): {data?: Contact; errors: string[]} {
  if (!input || typeof input !== 'object' || Array.isArray(input)) return {errors:['form']};
  const v = input as Record<string,unknown>; const errors:string[]=[];
  const allowed=['intent','locale','name','email','company','message','api','token','website','requestId'];
@@ -14,7 +14,7 @@ export function validate(input: unknown): {data?: Contact; errors: string[]} {
  if(!['apis','demo'].includes(v.intent as string)) errors.push('intent');
  if(!locales.includes(v.locale as Locale)) errors.push('locale');
  if(v.api!==undefined && v.api!=='' && !catalog.some(a=>a.id===v.api)) errors.push('api');
- if(typeof v.token!=='string'||!v.token||v.token.length>2048) errors.push('token');
+ if(typeof v.token!=='string'||(requireToken&&!v.token)||v.token.length>2048) errors.push('token');
  if(v.website!=='' || typeof v.requestId!=='string'|| !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v.requestId)) errors.push('form');
  if(errors.length) return {errors:[...new Set(errors)]};
  const data={...v} as unknown as Contact;
@@ -39,7 +39,10 @@ export async function handleContact(request:Request, env:Env, fetcher:typeof fet
  if(request.headers.get('content-type')?.split(';')[0].trim()!=='application/json') return reply(415,{error:'type'});
  let input:unknown;
  try{input=await readLimited(request);}catch(e){return reply(e instanceof Error&&e.message==='size'?413:400,{error:'invalid'});}
- const {data,errors}=validate(input);if(!data)return reply(400,{error:'invalid',fields:errors});
+ const mailConfigured=Boolean(env.RESEND_API_KEY&&env.MAIL_FROM);
+ const {data,errors}=validate(input,mailConfigured);if(!data)return reply(400,{error:'invalid',fields:errors});
+ // A draft is not a provider acceptance; no external call in unconfigured mode.
+ if(!mailConfigured)return reply(200,{fallback:'mailto'});
  if(!env.TURNSTILE_SECRET_KEY||!env.RESEND_API_KEY||!env.MAIL_FROM||/[\r\n]/.test(env.MAIL_FROM)) return reply(503,{error:'unavailable'});
  try {
   const verification=await fetcher('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',body:new URLSearchParams({secret:env.TURNSTILE_SECRET_KEY,response:data.token}),signal:AbortSignal.timeout(8000)});
