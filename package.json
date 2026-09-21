@@ -1,0 +1,34 @@
+{
+  "name": "openxpand-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0 <23"
+  },
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check && tsx scripts/check-content.ts",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && tsx scripts/check-html.ts",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "test:performance": "node scripts/performance.mjs",
+    "test:server": "tsx scripts/test-server.ts",
+    "capture": "node scripts/capture.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.0.0",
+    "lighthouse": "^13.5.0",
+    "sharp": "^0.35.4",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^5.0.1"
+  }
+}

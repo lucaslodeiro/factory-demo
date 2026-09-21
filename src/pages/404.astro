@@ -1,0 +1,6 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {translations} from '../data/i18n';
+const t=translations.es;
+---
+<Layout locale="es" path="404/" title={t.notFound} description={t.notFoundText} noindex><section class="wrap section"><h1>{t.notFound}</h1><p>{t.notFoundText}</p><a class="button" href="/es/">{t.home}</a></section></Layout>

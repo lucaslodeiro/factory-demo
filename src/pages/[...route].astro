@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Catalog from '../components/Catalog.astro';
+import Contact from '../components/Contact.astro';
+import {locales,paths,catalog,type Locale} from '../data/catalog';
+import {translations} from '../data/i18n';
+export function getStaticPaths(){return locales.flatMap(locale=>paths.map(path=>({params:{route:`${locale}/${path}`.replace(/\/$/,'')},props:{locale,path}})));}
+const {locale,path}=Astro.props as {locale:Locale;path:string};const t=translations[locale];
+const api=catalog.find(a=>path===`apis/${a.id}/`);const isHome=path==='';const isDev=path==='developers/';const isOp=path==='operators/';const isCatalog=path==='apis/';const isContact=path.startsWith('contact/');const isDemo=path==='contact/demo/';const isPrivacy=path==='privacy/';const is404=path==='404/';
+const title=isHome?t.hero:api?api.name:isDev?t.devTitle:isOp?t.platformTitle:isCatalog?t.apiTitle:isContact?(isDemo?t.demoTitle:t.requestTitle):isPrivacy?t.privacyTitle:t.notFound;
+const description=api?api.copy[locale][0]:isDev?t.devIntro:isOp?t.platformIntro:isCatalog?t.apiIntro:isContact?t.metaContact:isPrivacy?t.metaPrivacy:t.metaHome;
+const url=(s:string)=>`/${locale}/${s}`;
+---
+<Layout locale={locale} path={path} title={title} description={description} noindex={is404}>
+{isHome?<>
+<section class="hero"><div class="wrap"><p class="eyebrow">{t.eyebrow}</p><h1>{t.hero}<span class="dot" aria-hidden="true">.</span></h1><p class="lead">{t.intro}</p><div class="audience-grid"><article><p class="eyebrow">{t.devAudience}</p><h2>{t.devTitle}</h2><p>{t.devIntro}</p><a class="button peach" href={url('contact/apis/')}>{t.try} <span aria-hidden="true">↗</span></a></article><article><p class="eyebrow">{t.opAudience}</p><h2>{t.opTitle}</h2><p>{t.opIntro}</p><a class="button outline" href={url('contact/demo/')}>{t.demo} <span aria-hidden="true">↗</span></a></article></div></div></section>
+<section class="wrap section split" id="developers"><div><p class="eyebrow">{t.devAudience}</p><h2>{t.devTitle}</h2><p class="lead">{t.devIntro}</p><a class="text-link" href={url('developers/')}>{t.explore} <span aria-hidden="true">↗</span></a></div><img src="/assets/developers.webp" alt={t.devAlt} width="580" height="435" loading="lazy"/></section>
+<section class="tint" id="operators"><div class="wrap section split"><img src="/assets/operators.webp" alt={t.opAlt} width="580" height="435" loading="lazy"/><div><p class="eyebrow">{t.opAudience}</p><h2>{t.platformTitle}</h2><p class="lead">{t.platformIntro}</p><a class="text-link" href={url('operators/')}>{t.more} <span aria-hidden="true">↗</span></a></div></div></section>
+<section class="wrap section"><div class="section-heading"><div><p class="eyebrow">{t.catalog}</p><h2>{t.apiTitle}</h2></div><a class="text-link" href={url('apis/')}>{t.explore} ↗</a></div><div class="api-links">{catalog.map(a=><a href={url(`apis/${a.id}/`)}>{a.name} <span aria-hidden="true">↗</span></a>)}</div></section>
+<section class="dark" id="about"><div class="wrap section narrow"><p class="eyebrow">OpenXpand</p><h2>{t.aboutTitle}</h2><p class="lead">{t.about}</p></div></section>
+</>:<section class:list={['page-heading',api||isContact?'tint':'']}><div class="wrap"><a class="breadcrumb" href={url(api?'apis/':'')}>{api?t.back:t.home}</a><p class="eyebrow">{isDev?t.devAudience:isOp?t.opAudience:api?t.catalog:'OpenXpand'}</p><h1>{title}</h1><p class="lead">{is404?t.notFoundText:description}</p></div></section>}
+{(isCatalog||isDev)&&<section class="wrap section"><Catalog locale={locale}/></section>}
+{isDev&&<section class="tint"><div class="wrap section"><h2>{t.accessTitle}</h2><div class="steps">{t.steps.map(([n,h,p])=><article><span class="number">{n}</span><h3>{h}</h3><p>{p}</p></article>)}</div><p>{t.access}</p><a class="button" href={url('contact/apis/')}>{t.try} ↗</a></div></section>}
+{isOp&&<><section class="wrap section split"><div><h2>{t.opTitle}</h2><p class="lead">{t.opIntro}</p><a class="button" href={url('contact/demo/')}>{t.demo} ↗</a></div><img src="/assets/operators.webp" width="580" height="435" alt={t.opAlt} fetchpriority="high"/></section><section class="tint"><div class="wrap section"><div class="capabilities">{t.capabilities.map(([h,p])=><article><h2>{h}</h2><p>{p}</p></article>)}</div><p class="lead">{t.demoDetail}</p><a class="button" href={url('contact/demo/')}>{t.demo} ↗</a></div></section></>}
+{api&&<section class="wrap section detail-grid"><div><h2>{t.operations}</h2><ul class="pills">{api.operations.map(op=><li>{op}</li>)}</ul><h2>{t.useCase}</h2><p class="lead">{api.copy[locale][1]}</p><p>{t.responsible}</p></div><aside class="callout"><h2>{t.accessTitle}</h2><p>{t.access}</p><a class="button" href={url(`contact/apis/?api=${api.id}`)}>{t.try} ↗</a></aside></section>}
+{isContact&&<section class="wrap section contact-grid"><div><h2>{isDemo?t.opTitle:t.accessTitle}</h2><p class="lead">{t.contactIntro}</p><p>{isDemo?t.demoDetail:t.access}</p><a href="mailto:info@openxpand.com">info@openxpand.com</a></div><Contact locale={locale} intent={isDemo?'demo':'apis'}/></section>}
+{isPrivacy&&<section class="wrap section narrow"><p>{t.privacyIntro}</p>{t.privacySections.map(([h,p])=><section><h2>{h}</h2><p>{p}</p></section>)}</section>}
+{is404&&<div class="wrap section"><a class="button" href={url('')}>{t.home} ↗</a></div>}
+{(isHome||isDev||isOp||api)&&<section class="wrap section faq"><h2>{t.faqTitle}</h2>{t.faqs.map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}</section>}
+</Layout>

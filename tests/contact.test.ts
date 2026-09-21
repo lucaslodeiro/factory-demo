@@ -1,0 +1,31 @@
+import {describe,it,expect,vi} from 'vitest';
+import {handleContact,validate,type Env} from '../src/lib/contact';
+const env:Env={SITE_ORIGIN:'https://portal.test',TURNSTILE_SECRET_KEY:'test-secret',RESEND_API_KEY:'test-key',MAIL_FROM:'OpenXpand <contact@portal.test>'};
+const valid={intent:'apis',locale:'es',name:'Synthetic <Tester>',email:'synthetic@example.test',company:'Test & Co',message:'Synthetic inquiry',api:'sim-swap',token:'test-token',website:'',requestId:'b9c8aa5c-50be-4166-a41d-efbb6a43da92'};
+const req=(body:unknown=valid,headers:Record<string,string>={})=>new Request('https://portal.test/api/contact',{method:'POST',headers:{origin:env.SITE_ORIGIN,'content-type':'application/json',...headers},body:JSON.stringify(body)});
+const verified={success:true,hostname:'portal.test',action:'contact_apis'};
+const response=(x:unknown,status=200)=>new Response(JSON.stringify(x),{status});
+describe('closed contact contract',()=>{
+ it('accepts all locales and both intents',()=>{for(const locale of ['es','en','pt'])for(const intent of ['apis','demo'])expect(validate({...valid,locale,intent}).errors).toEqual([]);});
+ it.each([{name:''},{email:'bad'},{email:'a@example.test\r\nBcc:x@y.test'},{company:'a'.repeat(161)},{message:'a'.repeat(5001)},{name:'a'.repeat(101)},{intent:'other'},{locale:'fr'},{api:'imei-fraud'},{token:''},{website:'bot'},{to:'attacker@example.test'},{requestId:'bad'}])('rejects invalid input %j',patch=>expect(validate({...valid,...patch}).data).toBeUndefined());
+ it('fixes recipient and sender, sets reply-to, includes all data and escapes HTML',async()=>{
+  const fetcher=vi.fn().mockResolvedValueOnce(response(verified)).mockResolvedValueOnce(response({id:'test-message'}));
+  expect((await handleContact(req(),env,fetcher)).status).toBe(200);
+  const payload=JSON.parse(fetcher.mock.calls[1][1].body);expect(payload.to).toEqual(['info@openxpand.com']);expect(payload.from).toBe(env.MAIL_FROM);expect(payload.reply_to).toBe(valid.email);expect(payload.text).toContain('Intent: apis');expect(payload.text).toContain('Locale: es');expect(payload.text).toContain('API: sim-swap');expect(payload.text).toContain('Test & Co');expect(payload.html).toContain('&lt;Tester&gt;');expect(payload.html).toContain('&amp;');
+ });
+ it('sends demo intent with matching antispam action',async()=>{const f=vi.fn().mockResolvedValueOnce(response({...verified,action:'contact_demo'})).mockResolvedValueOnce(response({id:'demo'}));expect((await handleContact(req({...valid,intent:'demo',locale:'pt'}),env,f)).status).toBe(200);expect(JSON.parse(f.mock.calls[1][1].body).text).toContain('Intent: demo\nLocale: pt');});
+ it.each([{success:false},{...verified,hostname:'evil.test'},{...verified,action:'contact_demo'}])('rejects antispam %j',async check=>{const f=vi.fn().mockResolvedValue(response(check));expect((await handleContact(req(),env,f)).status).toBe(400);expect(f).toHaveBeenCalledTimes(1);});
+ it('rejects foreign and missing origins without external calls',async()=>{for(const origin of ['https://evil.test','']){const f=vi.fn();expect((await handleContact(req(valid,{origin}),env,f)).status).toBe(403);expect(f).not.toHaveBeenCalled();}});
+ it('rejects large bodies even without Content-Length',async()=>{const f=vi.fn();expect((await handleContact(req({...valid,message:'é'.repeat(17000)}),env,f)).status).toBe(413);expect(f).not.toHaveBeenCalled();});
+ it('rejects malformed JSON and unsupported content type',async()=>{expect((await handleContact(new Request('https://portal.test/api/contact',{method:'POST',headers:{origin:env.SITE_ORIGIN,'content-type':'application/json'},body:'{bad'}),env)).status).toBe(400);expect((await handleContact(req(valid,{'content-type':'text/plain'}),env)).status).toBe(415);});
+ it('fails closed on missing configuration',async()=>{const f=vi.fn();expect((await handleContact(req(),{...env,RESEND_API_KEY:''},f)).status).toBe(503);expect(f).not.toHaveBeenCalled();});
+ it.each([429,500,401])('handles provider %s without exposing response',async code=>{const f=vi.fn().mockResolvedValueOnce(response(verified)).mockResolvedValueOnce(response({secret:'private upstream error'},code));const r=await handleContact(req(),env,f);expect(r.status).toBe(503);expect(await r.text()).toBe('{"error":"retry"}');});
+ it('handles network timeout and malformed provider success',async()=>{const f=vi.fn().mockRejectedValue(new DOMException('private','TimeoutError'));expect((await handleContact(req(),env,f)).status).toBe(503);const g=vi.fn().mockResolvedValueOnce(response(verified)).mockResolvedValueOnce(response({}));expect((await handleContact(req(),env,g)).status).toBe(503);});
+ it('reuses idempotency for retries but binds it to message content',async()=>{const f=vi.fn().mockImplementation(async(url:string)=>response(url.includes('siteverify')?verified:{id:'ok'}));await handleContact(req(),env,f);await handleContact(req(),env,f);await handleContact(req({...valid,message:'Changed'}),env,f);const keys=[1,3,5].map(i=>f.mock.calls[i][1].headers['Idempotency-Key']);expect(keys[0]).toBe(keys[1]);expect(keys[0]).not.toBe(keys[2]);});
+});
+
+describe('rejection before sending',()=>{
+ it('never calls providers for invalid fields, honeypot or missing token',async()=>{for(const patch of [{token:''},{website:'bot'},{email:'bad'},{to:'other@example.test'}]){const f=vi.fn();expect((await handleContact(req({...valid,...patch}),env,f)).status).toBe(400);expect(f).not.toHaveBeenCalled();}});
+ it('rejects GET and does not expose secrets in replies',async()=>{const f=vi.fn();const r=await handleContact(new Request('https://portal.test/api/contact'),env,f);expect(r.status).toBe(405);expect(f).not.toHaveBeenCalled();expect(await r.text()).not.toContain(env.RESEND_API_KEY);});
+ it('handles failed Turnstile service without sending mail',async()=>{const f=vi.fn().mockResolvedValue(response({internal:'private'},503));expect((await handleContact(req(),env,f)).status).toBe(503);expect(f).toHaveBeenCalledTimes(1);});
+});

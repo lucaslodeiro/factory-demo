@@ -1,0 +1,1 @@
+export function GET(){return new Response(import.meta.env.PUBLIC_SITE_ENV==='production'?'User-agent: *\nAllow: /\nSitemap: https://openxpand.com/sitemap.xml\n':'User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain'}});}
