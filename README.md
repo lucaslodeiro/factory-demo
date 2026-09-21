@@ -26,6 +26,8 @@ PUBLIC_SITE_ENV=production PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA np
 PLAYWRIGHT_BROWSERS_PATH=/tmp/openxpand-browsers npm run test:browser
 ```
 
+En Factory, el supervisor proporciona `FACTORY_BROWSER_CDP_URL` y `FACTORY_BROWSER_DEBUG_PORT`. Las pruebas y capturas se conectan mediante `chromium.connectOverCDP()`; Lighthouse usa el puerto suministrado. No instalar ni iniciar otro navegador cuando esas variables están presentes. El supervisor conserva su ciclo de vida; cada prueba cierra sus propios contextos. Sin esas variables se conserva el lanzamiento local.
+
 La clave anterior es pública de pruebas de Turnstile; **no desplegar ese build como producción**. Las pruebas interceptan Turnstile y simulan Resend; no envían correos ni contactan producción por defecto. El comando `capture` sí visita el portal original y es una comprobación manual explícita.
 
 Para medir rendimiento y capturar referencias, mantener `npm run test:server` en otra terminal y ejecutar:
@@ -35,7 +37,7 @@ PLAYWRIGHT_BROWSERS_PATH=/tmp/openxpand-browsers npm run test:performance
 PLAYWRIGHT_BROWSERS_PATH=/tmp/openxpand-browsers npm run capture
 ```
 
-Lighthouse ejecuta tres mediciones móviles con perfil Chrome nuevo por ruta: portada, catálogo, SIM Swap, operadores y contacto. Reporta medianas, entorno y solicitudes externas; exige Performance ≥90, LCP ≤2500 ms y CLS ≤0,1. El build verifica ≤80 KiB gzip de JS propio por página. Medir con el widget externo habilitado; repetir con configuración operativa antes de publicar. No hay cifras Lighthouse acreditadas en esta entrega: ver `docs/verification.md`.
+Lighthouse ejecuta tres mediciones móviles con caché fría por ejecución: portada, catálogo, SIM Swap, operadores y contacto. Reporta medianas, entorno y solicitudes externas; exige Performance ≥90, LCP ≤2500 ms y CLS ≤0,1. El build verifica ≤80 KiB gzip de JS propio por página. Medir con el widget externo habilitado; repetir con configuración operativa antes de publicar. Los resultados medidos y sus límites se registran en `docs/verification.md` y `docs/evidence/performance.json`.
 
 ## Estructura
 

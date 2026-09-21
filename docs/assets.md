@@ -11,4 +11,10 @@ Recursos descargados del portal del cliente el 21/09/2026 para la reutilización
 
 El CSS público `wp-content/uploads/elementor/css/post-8.css` define violeta `#3D00A9`, durazno `#FFBC7D`, coral `#E89A8F` y gris `#282828`. El nuevo portal conserva el violeta dominante, el acento durazno, el logo blanco y las ilustraciones específicas por audiencia, con mayor espacio y jerarquía. Se usa tipografía de sistema para evitar descarga externa de fuentes; el portal original sirve Roboto. El diagrama `work-flow-openxpand.png` no se reutiliza: la arquitectura se explica como contenido traducible y accesible, sin trasladar texto incrustado ni afirmaciones no corroboradas.
 
-**Comparación visual pendiente:** los recursos y CSS se inspeccionaron, pero Chromium falló al arrancar por permisos MachPortRendezvous y la herramienta de UI no ofrece navegadores. No hay capturas ni afirmación de equivalencia visual verificada. `npm run capture`, con servidor de pruebas activo en un entorno con navegador habilitado, genera PNG de portada original y de portada/desarrolladores/operadores nuevos a 360 y 1440 px en `docs/evidence`. Revisarlos y documentar diferencias antes de aprobar AC-11.
+## Comparación renderizada — 21/09/2026
+
+Capturas reales con Chrome 153 administrado por Factory, a 360 y 1440 px. Revisadas portada original, portada nueva y páginas de desarrolladores y operadores. Archivos en `docs/evidence/original-{360,1440}.png`, `new-home-{360,1440}.png`, `new-developers-{360,1440}.png` y `new-operators-{360,1440}.png`.
+
+Se preservan el logotipo blanco, violeta dominante, acento cálido y ambas fotografías específicas por audiencia. Se reemplazan las tarjetas densas y el titular animado por jerarquía estática, navegación visible y dos CTA diferenciados. Las secciones se apilan en móvil, conservando sus fotografías y enlaces. Los fondos neutros y mayor espacio mejoran la lectura. Se omite el fondo decorativo de circuitos para priorizar el mensaje y evitar una descarga ornamental; no se sustituye por stock genérico. Los textos alternativos describen las fotografías efectivamente reutilizadas.
+
+El capturador espera la decodificación de las imágenes diferidas antes de exportar, para evitar huecos que no corresponden a la experiencia de desplazamiento.
