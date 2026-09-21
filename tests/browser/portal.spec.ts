@@ -34,7 +34,7 @@ test('keyboard reaches every main control with visible focus',async({page})=>{
   for(let i=0;i<count*2+4 && seen.size<count;i++){
    await page.keyboard.press('Tab');
    const active=page.locator(':focus');if(await active.count()===0)continue;
-   const index=await controls.evaluateAll(elements=>elements.indexOf(document.activeElement!));
+   const index=await controls.evaluateAll(elements=>elements.findIndex(element=>element===document.activeElement));
    if(index<0)continue;seen.add(index);await expect(active).toBeVisible();
    expect(await active.evaluate(el=>getComputedStyle(el).outlineStyle)).not.toBe('none');
   }
