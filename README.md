@@ -89,4 +89,4 @@ Para habilitar y verificar correo automático se necesitan secretos autorizados,
 
 Ver `docs/assets.md`, `docs/redirects.md` y `docs/verification.md` para procedencia, migración y límites reales de validación.
 
-La misma instrucción humana exime la prueba de AC-10. Para ejecutar solo las pruebas requeridas en esta entrega: `npm run test:browser -- --grep-invert "responsive|200%|keyboard reaches"`. Las pruebas de accesibilidad existentes siguen disponibles.
+La instrucción humana de secuencia 8 exime únicamente la prueba de zoom nativo al 200 % de AC-10. Ejecutar `npm run test:browser` para comprobar adaptación a 360/768/1440 px, axe, teclado y reflujo con texto ampliado. Esta última comprobación complementaria no se presenta como zoom nativo del navegador.

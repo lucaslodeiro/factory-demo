@@ -1,5 +1,21 @@
 # Estado de verificación
 
+## Revalidación Builder — instrucción humana de secuencia 8
+
+El 21/09/2026 se verificó Node v22.23.2 y el informe autorizado del supervisor: ready, Chrome 153.0.8010.53. Las variables de conexión no estaban exportadas; se obtuvieron el endpoint y el puerto del informe y se suministraron como FACTORY_BROWSER_CDP_URL y FACTORY_BROWSER_DEBUG_PORT. La conexión CDP funcionó. Se reutilizó el servidor local en 127.0.0.1:4321 después de comprobar que su directorio de trabajo corresponde a este worktree; sirve el build recién generado y simula únicamente los proveedores de contacto.
+
+La instalación reproducible terminó correctamente (401 paquetes). Pasaron check (26 archivos sin diagnósticos y paridad de contenido), 35 pruebas unitarias/integración, build (54 páginas localizadas verificadas, máximo de 1383 bytes gzip de JS propio) y las **21 pruebas de navegador completas**. Esta ejecución no tuvo intentos fallidos. No fue necesario modificar código de producción ni dependencias.
+
+**AC-10:** se comprobaron nueve plantillas a 360, 768 y 1440 px sin desbordamiento horizontal ni hallazgos axe graves/críticos; también acceso por teclado y foco visible en todos los controles principales. Pasó la prueba complementaria de reflujo con fuente al 200 % y reduced-motion. No se probó zoom nativo al 200 %, exento por la instrucción de secuencia 8. La exención total mencionada en el historial inferior corresponde a la instrucción anterior y ya no determina la aceptación actual. README corregido para ejecutar toda la suite.
+
+**AC-6:** se mantiene el fallback autorizado. Las pruebas cubren las dos intenciones y los tres idiomas, destinatario fijo, cuerpo completo codificado, conservación de campos y aviso explícito de borrador sin enviar. Se interceptó la apertura nativa del enlace para inspeccionarlo; no se abrió una aplicación de correo ni se afirma recepción real. Las pruebas del servidor comprueban que la falta de configuración no llama a proveedores.
+
+Se inspeccionaron las ocho capturas existentes del original y del nuevo portal en escritorio/móvil, junto con docs/assets.md. Logo, paleta y recursos por audiencia se conservan. No hubo cambios visuales; las capturas previas siguen representando las plantillas actuales.
+
+**AC-9:** `npm run test:performance` terminó con exit 0: quince mediciones móviles nuevas con caché fría, tres por ruta, mediante el puerto del supervisor. Todas las medianas de Performance son 100 y de CLS son 0. Medianas de LCP: portada 902 ms; catálogo 901 ms; SIM Swap 901 ms; operadores 1277 ms; contacto 926 ms. Los informes lighthouse-*.json y performance.json se renovaron y sustituyen las mediciones históricas inferiores. Contacto incluye las solicitudes externas de Turnstile con clave pública de prueba, registradas separadamente. El entorno es macOS arm64 con throttling móvil simulado predeterminado de Lighthouse. No se cerró el navegador administrado.
+
+## Historial anterior a la instrucción de secuencia 8
+
 ## Revalidación Builder — 21/09/2026, 21:46 UTC
 
 La ejecución fresca encontró ya implementadas las instrucciones humanas de secuencia 7. No fue necesario cambiar código ni dependencias. Se verificó Node v22.23.2 y se leyó el informe del supervisor (ready, Chrome 153.0.8010.53); las pruebas conectaron al navegador mediante CDP. El servidor existente en 127.0.0.1:4321 pertenece a este worktree, comprobado mediante su directorio de trabajo.
