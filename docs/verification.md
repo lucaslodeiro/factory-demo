@@ -1,5 +1,15 @@
 # Estado de verificación
 
+## Revalidación Builder — 21/09/2026, 21:46 UTC
+
+La ejecución fresca encontró ya implementadas las instrucciones humanas de secuencia 7. No fue necesario cambiar código ni dependencias. Se verificó Node v22.23.2 y se leyó el informe del supervisor (ready, Chrome 153.0.8010.53); las pruebas conectaron al navegador mediante CDP. El servidor existente en 127.0.0.1:4321 pertenece a este worktree, comprobado mediante su directorio de trabajo.
+
+Se repitieron la instalación reproducible (401 paquetes, exit 0), check (26 archivos, cero diagnósticos), las 35 pruebas unitarias, el build de producción con clave pública de prueba (54 páginas localizadas, 1383 bytes gzip máximos de JavaScript propio) y las 16 pruebas de navegador requeridas: todos con exit 0. No hubo intentos fallidos en esta revalidación. Las pruebas de AC-10 se excluyeron expresamente según la instrucción humana; no se afirma haberlas ejecutado.
+
+Se revisaron de nuevo las ocho capturas existentes de escritorio y móvil y el inventario de recursos. La implementación visual no cambió. El fallback se verificó como borrador mailto para ambas intenciones y los tres idiomas, sin abrir una aplicación nativa ni enviar correo real. La recepción real no se presenta como demostrada: se aplica la alternativa autorizada por el humano. Los incidentes descritos más abajo pertenecen a la ejecución anterior.
+
+`npm run test:performance` terminó con exit 0: quince mediciones nuevas, tres por ruta. Las cinco medianas de Performance fueron 100 y todas las de CLS fueron 0. LCP: portada 902 ms, catálogo 901 ms, SIM Swap 901 ms, operadores 1277 ms y contacto 1683 ms. Los JSON de Lighthouse y performance.json se actualizaron con esta ejecución; sustituyen los valores históricos de la tabla inferior. Se incluyeron las solicitudes externas del widget con clave pública de prueba. No se modificó el ciclo de vida del navegador administrado.
+
 Verificación del 21/09/2026 con Node 22.23.2 y Chrome 153.0.8010.53 de Factory. La instrucción humana de secuencia 7 autoriza el fallback mailto de AC-6 y exime las pruebas de AC-10. No se modificó la especificación aprobada. No se desplegó ni se enviaron correos reales.
 
 ## Comandos y resultados
