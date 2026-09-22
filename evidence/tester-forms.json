@@ -1,0 +1,66 @@
+{
+ "origin": "http://127.0.0.1:4405",
+ "checkedAt": "2026-09-22T20:23:29.706Z",
+ "results": [
+  {
+   "id": "AC-6 form es/apis@360",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"apis\",\"locale\":\"es\"}"
+  },
+  {
+   "id": "AC-6 form es/demo@360",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"demo\",\"locale\":\"es\"}"
+  },
+  {
+   "id": "AC-6 form en/apis@360",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"apis\",\"locale\":\"en\"}"
+  },
+  {
+   "id": "AC-6 form en/demo@360",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"demo\",\"locale\":\"en\"}"
+  },
+  {
+   "id": "AC-6 form pt/apis@360",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"apis\",\"locale\":\"pt\"}"
+  },
+  {
+   "id": "AC-6 form pt/demo@360",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"demo\",\"locale\":\"pt\"}"
+  },
+  {
+   "id": "AC-6 form es/apis@1440",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"apis\",\"locale\":\"es\"}"
+  },
+  {
+   "id": "AC-6 form es/demo@1440",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"demo\",\"locale\":\"es\"}"
+  },
+  {
+   "id": "AC-6 form en/apis@1440",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"apis\",\"locale\":\"en\"}"
+  },
+  {
+   "id": "AC-6 form en/demo@1440",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"demo\",\"locale\":\"en\"}"
+  },
+  {
+   "id": "AC-6 form pt/apis@1440",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"apis\",\"locale\":\"pt\"}"
+  },
+  {
+   "id": "AC-6 form pt/demo@1440",
+   "ok": true,
+   "detail": "{\"invalid\":\"true\",\"keptOnError\":true,\"clearedOnSuccess\":true,\"sameRequestId\":true,\"api\":\"sim-swap\",\"intent\":\"demo\",\"locale\":\"pt\"}"
+  }
+ ]
+}

@@ -1,0 +1,825 @@
+{
+ "origin": "http://127.0.0.1:4405",
+ "checkedAt": "2026-09-22T20:20:52.418Z",
+ "violations": [],
+ "structure": [
+  {
+   "locale": "es",
+   "route": "",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    2,
+    3,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    3,
+    4,
+    4,
+    3,
+    4,
+    4,
+    2,
+    2,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 8,
+   "sectionsNamed": 8
+  },
+  {
+   "locale": "es",
+   "route": "apis/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 3,
+   "sectionsNamed": 1
+  },
+  {
+   "locale": "es",
+   "route": "apis/sim-swap/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 4,
+   "sectionsNamed": 2
+  },
+  {
+   "locale": "es",
+   "route": "developers/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 5,
+   "sectionsNamed": 3
+  },
+  {
+   "locale": "es",
+   "route": "operators/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 5,
+   "sectionsNamed": 2
+  },
+  {
+   "locale": "es",
+   "route": "contact/apis/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "es",
+   "route": "contact/demo/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "es",
+   "route": "privacy/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "es",
+   "route": "404/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 1,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "en",
+   "route": "",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    2,
+    3,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    3,
+    4,
+    4,
+    3,
+    4,
+    4,
+    2,
+    2,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 8,
+   "sectionsNamed": 8
+  },
+  {
+   "locale": "en",
+   "route": "apis/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 3,
+   "sectionsNamed": 1
+  },
+  {
+   "locale": "en",
+   "route": "apis/sim-swap/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 4,
+   "sectionsNamed": 2
+  },
+  {
+   "locale": "en",
+   "route": "developers/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 5,
+   "sectionsNamed": 3
+  },
+  {
+   "locale": "en",
+   "route": "operators/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 5,
+   "sectionsNamed": 2
+  },
+  {
+   "locale": "en",
+   "route": "contact/apis/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "en",
+   "route": "contact/demo/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "en",
+   "route": "privacy/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "en",
+   "route": "404/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 1,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "pt",
+   "route": "",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    2,
+    3,
+    4,
+    4,
+    4,
+    4,
+    3,
+    4,
+    4,
+    3,
+    4,
+    4,
+    3,
+    4,
+    4,
+    2,
+    2,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 8,
+   "sectionsNamed": 8
+  },
+  {
+   "locale": "pt",
+   "route": "apis/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 3,
+   "sectionsNamed": 1
+  },
+  {
+   "locale": "pt",
+   "route": "apis/sim-swap/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 4,
+   "sectionsNamed": 2
+  },
+  {
+   "locale": "pt",
+   "route": "developers/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 5,
+   "sectionsNamed": 3
+  },
+  {
+   "locale": "pt",
+   "route": "operators/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 5,
+   "sectionsNamed": 2
+  },
+  {
+   "locale": "pt",
+   "route": "contact/apis/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "pt",
+   "route": "contact/demo/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "pt",
+   "route": "privacy/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1,
+    2,
+    2,
+    2,
+    2
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 2,
+   "sectionsNamed": 0
+  },
+  {
+   "locale": "pt",
+   "route": "404/",
+   "ok": true,
+   "h1": 1,
+   "levels": [
+    1
+   ],
+   "skipped": null,
+   "header": 1,
+   "main": 1,
+   "footer": 1,
+   "skip": "#main",
+   "sectionsTotal": 1,
+   "sectionsNamed": 0
+  }
+ ],
+ "reflow": [
+  {
+   "locale": "es",
+   "route": "",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "apis/",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "apis/sim-swap/",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "developers/",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "operators/",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "contact/apis/",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "contact/demo/",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "privacy/",
+   "ok": true
+  },
+  {
+   "locale": "es",
+   "route": "404/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "apis/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "apis/sim-swap/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "developers/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "operators/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "contact/apis/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "contact/demo/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "privacy/",
+   "ok": true
+  },
+  {
+   "locale": "en",
+   "route": "404/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "apis/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "apis/sim-swap/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "developers/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "operators/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "contact/apis/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "contact/demo/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "privacy/",
+   "ok": true
+  },
+  {
+   "locale": "pt",
+   "route": "404/",
+   "ok": true
+  }
+ ]
+}
