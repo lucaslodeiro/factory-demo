@@ -1,2 +1,4 @@
 import {defineConfig} from '@playwright/test';
-export default defineConfig({testDir:'./tests/browser',use:{baseURL:'http://127.0.0.1:4321',headless:true},webServer:{command:'npm run test:server',url:'http://127.0.0.1:4321/es/',reuseExistingServer:!process.env.CI},reporter:'list',workers:2});
+// Keep 4321 as the default and let PORT move the whole suite when that port belongs to another checkout.
+export const origin=`http://127.0.0.1:${process.env.PORT||4321}`;
+export default defineConfig({testDir:'./tests/browser',use:{baseURL:origin,headless:true},webServer:{command:'npm run test:server',url:`${origin}/es/`,reuseExistingServer:!process.env.CI},reporter:'list',workers:2});

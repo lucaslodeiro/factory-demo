@@ -7,7 +7,7 @@ if(form){
  const selection=form.querySelector<HTMLSelectElement>('#api')!;
  const selected=new URLSearchParams(location.search).get('api');if(selected&&Array.from(selection.options).some(o=>o.value===selected))selection.value=selected;
  // Only catalog identifiers may be preserved across locale switches.
- if(selected&&selection.value===selected)document.querySelectorAll<HTMLAnchorElement>('.languages a').forEach(a=>a.search=`?api=${encodeURIComponent(selected)}`);
+ if(selected&&selection.value===selected)document.querySelectorAll<HTMLAnchorElement>('.languages a,.footer-languages a').forEach(a=>a.search=`?api=${encodeURIComponent(selected)}`);
  window.onTurnstileReady=()=>{widget=window.turnstile!.render('#security',{'sitekey':form.dataset.sitekey,'action':`contact_${form.dataset.intent}`,'language':form.dataset.locale,'size':'flexible','response-field':false,callback:(value:string)=>{token=value;},'expired-callback':()=>{token='';},'error-callback':()=>{token='';status.textContent=copy.spamError;}});};
  if(form.dataset.sitekey){const script=document.createElement('script');script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileReady&render=explicit';script.async=true;script.onerror=()=>{status.textContent=copy.spamError;};document.head.append(script);}
  const mark=(name:string,message:string)=>{const el=form.querySelector<HTMLInputElement|HTMLTextAreaElement>(`[name="${name}"]`);const target=document.getElementById(`${name}-error`);if(el&&target){el.setAttribute('aria-invalid',message?'true':'false');target.textContent=message;}};

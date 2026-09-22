@@ -1,6 +1,13 @@
 ---
-import {catalog,type Locale} from '../data/catalog';
+import {apiGroups,catalog,type Locale} from '../data/catalog';
 import {translations} from '../data/i18n';
-const {locale}=Astro.props as {locale:Locale}; const t=translations[locale];
+const {locale,level=2,actions=true}=Astro.props as {locale:Locale;level?:2|3;actions?:boolean};
+const t=translations[locale];
+// The group heading follows the heading of the section that embeds the grid, so no level is skipped.
+const GroupHeading=`h${level}` as 'h2'|'h3'; const CardHeading=`h${level+1}` as 'h3'|'h4';
+const api=(id:string)=>catalog.find(a=>a.id===id)!;
 ---
-<div class="catalog-grid">{catalog.map((api,i)=><article class="api-card"><span class="number" aria-hidden="true">{String(i+1).padStart(2,'0')} ↗</span><h3><a href={`/${locale}/apis/${api.id}/`}>{api.name}</a></h3><p>{api.copy[locale][0]}</p><span class="operations">{api.operations.join(' / ')}</span><a class="text-link" href={`/${locale}/contact/apis/?api=${api.id}`}>{t.try}<span aria-hidden="true"> ↗</span></a></article>)}</div>
+<div class="catalog">{apiGroups.map((group,g)=><div class="api-group">
+<div class="group-heading"><GroupHeading>{t.apiGroups[g][0]}</GroupHeading><p>{t.apiGroups[g][1]}</p></div>
+<div class="catalog-grid">{group.apis.map(id=><article class="api-card"><CardHeading><a href={`/${locale}/apis/${id}/`}>{api(id).name}<span aria-hidden="true"> ↗</span></a></CardHeading><p>{api(id).copy[locale][0]}</p><span class="operations">{api(id).operations.join(' / ')}</span>{actions&&<a class="text-link" href={`/${locale}/contact/apis/?api=${id}`}>{t.try}<span aria-hidden="true"> ↗</span></a>}</article>)}</div>
+</div>)}</div>

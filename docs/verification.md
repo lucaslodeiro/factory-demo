@@ -1,5 +1,46 @@
 # Estado de verificación
 
+## Rediseño del portal — Builder, 22/09/2026
+
+Node v22.23.2 y Chrome administrado por Factory vía CDP. El puerto 4321 estaba ocupado por el servidor de **otro worktree** (comprobado con `lsof`: cwd `…/f40f2a74-…`), así que `test-server.ts`, `playwright.config.ts`, `performance.mjs` y `capture.mjs` pasaron a respetar `PORT` y toda la verificación se ejecutó en 4399 contra el build de este checkout. Sin esa separación, Playwright habría reutilizado el servidor ajeno y medido un build distinto.
+
+| Comando | Resultado |
+|---|---|
+| `npm run check` | exit 0; 28 archivos sin diagnósticos; paridad es/en/pt y diez familias en cuatro grupos |
+| `npm test` | exit 0; 35 pruebas |
+| `npm run build` | exit 0; 54 páginas localizadas; máximo 1391 bytes gzip de JS propio |
+| `PORT=4399 npm run test:browser` | exit 0; **26 pruebas** (21 previas + 5 nuevas) |
+| `PORT=4399 npm run test:performance` | exit 0; cinco rutas, mediana Performance 100 y CLS 0 |
+
+**Pruebas nuevas** (ninguna existente se relajó ni se eliminó): estructura de la portada en los tres idiomas —CTA de cabecera, chips del héroe, dos tarjetas de audiencia con su recorrido y su intención, diez capacidades enlazadas en cuatro grupos, pasos, bloque de responsabilidad, banda de cierre, pie agrupado y cero JavaScript propio— más el encaje de la primera pantalla a 360 y 1440 px.
+
+**Accesibilidad (AC-7).** axe sin violaciones `serious`/`critical` en las nueve plantillas a 360, 768 y 1440 px, incluido `color-contrast`. El recorrido completo por teclado alcanza **todos** los controles focusables de cada plantilla con `outline` visible. Reflujo con texto al 200 % en 720×450 sin desbordamiento horizontal. La cabecera no usa menú plegable: los enlaces permanecen visibles y tabulables en los tres anchos.
+
+**Sin JavaScript (AC-9).** Con `javaScriptEnabled:false`, la portada de los tres idiomas renderiza sus ocho secciones, 42 enlaces y las diez tarjetas de capacidad; el CTA primario navega a `/es/contact/apis/`, donde el formulario conserva `method="post"` y `action="/api/contact"`. Las tres portadas compiladas cargan **0 bytes** de JavaScript propio.
+
+**Dependencias (AC-9).** `package.json` y `package-lock.json` idénticos a la base (`git diff origin/main...HEAD` vacío). No se añadieron recursos externos ni activos en `public/`.
+
+**Afirmaciones (AC-4).** Auditoría sobre las 54 páginas compiladas con un patrón de términos de riesgo (sandbox, credenciales inmediatas, certificaciones, cumplimiento, SLA, precios, cobertura, disponibilidad geográfica, prueba social, plazos). Las únicas coincidencias son **negaciones explícitas** —«no entrega credenciales inmediatas» / «does not provide immediate credentials» / «não fornece credenciais imediatas»— y dos falsos positivos léxicos («av**iso** de privacidad», «**Plan** the integration»). No hay logotipos de clientes, métricas ni sellos.
+
+### Pendiente de confirmación humana (no publicado en la página)
+
+1. Operadores, mercados o regiones con disponibilidad confirmada. *Por defecto: no se nombra ninguno.*
+2. Certificaciones, auditorías o marcos de cumplimiento. *Por defecto: no se mencionan.*
+3. Plazo de respuesta a una solicitud de acceso. *Por defecto: no se indica plazo.*
+4. Clientes o partners autorizados a aparecer. *Por defecto: sin prueba social; en su lugar, el bloque de responsabilidad.*
+
+Rendimiento medido en esta revisión (mediana de tres corridas móviles con caché fría, límites: Performance ≥90, LCP ≤2500 ms, CLS ≤0,1):
+
+| Ruta | Performance | LCP (ms) | CLS |
+|---|---:|---:|---:|
+| `/es/` | 100 | 1126 | 0 |
+| `/es/apis/` | 100 | 901 | 0 |
+| `/es/apis/sim-swap/` | 100 | 901 | 0 |
+| `/es/operators/` | 100 | 1276 | 0 |
+| `/es/contact/apis/` | 100 | 1685 | 0 |
+
+Contacto incluye el widget externo con clave pública de pruebas, que explica su LCP mayor; las solicitudes externas se registran por corrida. Informes renovados en `docs/evidence/lighthouse-*.json` y `performance.json`. La evidencia visual y la procedencia de la paleta están en `docs/assets.md`.
+
 ## Revalidación Builder — instrucción humana de secuencia 8
 
 El 21/09/2026 se verificó Node v22.23.2 y el informe autorizado del supervisor: ready, Chrome 153.0.8010.53. Las variables de conexión no estaban exportadas; se obtuvieron el endpoint y el puerto del informe y se suministraron como FACTORY_BROWSER_CDP_URL y FACTORY_BROWSER_DEBUG_PORT. La conexión CDP funcionó. Se reutilizó el servidor local en 127.0.0.1:4321 después de comprobar que su directorio de trabajo corresponde a este worktree; sirve el build recién generado y simula únicamente los proveedores de contacto.

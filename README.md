@@ -28,23 +28,33 @@ PLAYWRIGHT_BROWSERS_PATH=/tmp/openxpand-browsers npm run test:browser
 
 En Factory, el supervisor proporciona `FACTORY_BROWSER_CDP_URL` y `FACTORY_BROWSER_DEBUG_PORT`. Las pruebas y capturas se conectan mediante `chromium.connectOverCDP()`; Lighthouse usa el puerto suministrado. No instalar ni iniciar otro navegador cuando esas variables están presentes. El supervisor conserva su ciclo de vida; cada prueba cierra sus propios contextos. Sin esas variables se conserva el lanzamiento local.
 
-La clave anterior es pública de pruebas de Turnstile; **no desplegar ese build como producción**. Las pruebas interceptan Turnstile y simulan Resend; no envían correos ni contactan producción por defecto. El comando `capture` sí visita el portal original y es una comprobación manual explícita.
+La clave anterior es pública de pruebas de Turnstile; **no desplegar ese build como producción**. Las pruebas interceptan Turnstile y simulan Resend; no envían correos ni contactan producción por defecto. `capture` tampoco sale a internet: fotografía el build local y aborta cualquier petición fuera de 127.0.0.1.
 
-Para medir rendimiento y capturar referencias, mantener `npm run test:server` en otra terminal y ejecutar:
+`test:server`, `test:browser`, `test:performance` y `capture` usan el puerto 4321 por defecto y respetan `PORT`. Conviene fijar otro puerto cuando 4321 pertenece a otro checkout; de lo contrario Playwright reutilizaría ese servidor y mediría un build ajeno:
+
+```sh
+PORT=4399 npm run test:browser
+```
+
+Para medir rendimiento y capturar evidencia, mantener `npm run test:server` en otra terminal (con el mismo `PORT`) y ejecutar:
 
 ```sh
 PLAYWRIGHT_BROWSERS_PATH=/tmp/openxpand-browsers npm run test:performance
 PLAYWRIGHT_BROWSERS_PATH=/tmp/openxpand-browsers npm run capture
 ```
 
+`capture` exporta página completa a 360 y 1440 px de portada, catálogo, ficha de API, desarrolladores, operadores y formulario de contacto en `docs/evidence/new-*.png`.
+
 Lighthouse ejecuta tres mediciones móviles con caché fría por ejecución: portada, catálogo, SIM Swap, operadores y contacto. Reporta medianas, entorno y solicitudes externas; exige Performance ≥90, LCP ≤2500 ms y CLS ≤0,1. El build verifica ≤80 KiB gzip de JS propio por página. Medir con el widget externo habilitado; repetir con configuración operativa antes de publicar. Los resultados medidos y sus límites se registran en `docs/verification.md` y `docs/evidence/performance.json`.
 
 ## Estructura
 
-- `src/data/catalog.ts`: IDs tipados, operaciones y descripción/caso de uso por idioma.
+- `src/data/catalog.ts`: IDs tipados, operaciones y descripción/caso de uso por idioma; `apiGroups` agrupa las diez familias en cuatro bloques de lectura (no es un empaquetado comercial).
 - `src/data/i18n.ts`: todas las cadenas editoriales, de interfaz, accesibilidad y metadatos. Los nombres técnicos de las APIs se conservan.
-- `src/pages/[...route].astro`: generación estática de 18 rutas por idioma.
-- `src/components`, `src/layouts`, `src/styles`: plantillas y estilos compartidos.
+- `src/pages/[...route].astro`: generación estática de 18 rutas por idioma y composición de la portada (héroe, audiencias, capacidades, marca, pasos, responsabilidad, FAQ y banda de cierre).
+- `src/components/Catalog.astro`: rejilla de capacidades compartida por portada y catálogo; `level` fija el nivel del encabezado de grupo para no saltar niveles.
+- `src/styles/global.css`: tokens de color, tipografía, espaciado, radios, sombras y transiciones, más el sistema de componentes.
+- `src/layouts`: cabecera con navegación siempre visible y CTA primario, y pie agrupado.
 - `src/scripts/contact.ts`: validación y estados accesibles; API opcional por identificador; nunca datos personales en URLs del portal; el borrador mailto autorizado contiene los datos para el cliente de correo.
 - `src/lib/contact.ts`: contrato cerrado, límites, antispam, correo e idempotencia.
 - `functions/api/contact.ts`: endpoint real; sin modo mock desplegable.

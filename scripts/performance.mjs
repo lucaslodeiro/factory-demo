@@ -1,11 +1,12 @@
 import lighthouse from 'lighthouse';import {launch} from 'chrome-launcher';import {chromium} from '@playwright/test';import fs from 'node:fs/promises';import assert from 'node:assert/strict';
 await fs.mkdir('docs/evidence',{recursive:true});
+const origin=`http://127.0.0.1:${process.env.PORT||4321}`;
 const routes=['','apis/','apis/sim-swap/','operators/','contact/apis/'];const results=[];
 for(const route of routes){const runs=[];for(let i=0;i<3;i++){
  const managedPort=Number(process.env.FACTORY_BROWSER_DEBUG_PORT);
  const chrome=managedPort ? {port:managedPort} : await launch({chromePath:chromium.executablePath(),chromeFlags:['--headless','--no-sandbox'],userDataDir:undefined});
- try{const {lhr}=await lighthouse(`http://127.0.0.1:4321/es/${route}`,{port:chrome.port,output:'json',onlyCategories:['performance'],formFactor:'mobile',disableStorageReset:false,logLevel:'error'});
- runs.push({performance:lhr.categories.performance.score*100,lcp:lhr.audits['largest-contentful-paint'].numericValue,cls:lhr.audits['cumulative-layout-shift'].numericValue,externalRequests:lhr.audits['network-requests'].details.items.filter(r=>!r.url.startsWith('http://127.0.0.1')).map(r=>({url:r.url,bytes:r.transferSize,status:r.statusCode})),environment:lhr.environment});
+ try{const {lhr}=await lighthouse(`${origin}/es/${route}`,{port:chrome.port,output:'json',onlyCategories:['performance'],formFactor:'mobile',disableStorageReset:false,logLevel:'error'});
+ runs.push({performance:lhr.categories.performance.score*100,lcp:lhr.audits['largest-contentful-paint'].numericValue,cls:lhr.audits['cumulative-layout-shift'].numericValue,externalRequests:lhr.audits['network-requests'].details.items.filter(r=>!r.url.startsWith(origin)).map(r=>({url:r.url,bytes:r.transferSize,status:r.statusCode})),environment:lhr.environment});
  await fs.writeFile(`docs/evidence/lighthouse-${route.replaceAll('/','-')||'home'}-${i+1}.json`,JSON.stringify(lhr));
  }finally{if(!managedPort)await chrome.kill();}}
  const median=k=>runs.map(r=>r[k]).sort((a,b)=>a-b)[1];const result={route:`/es/${route}`,median:{performance:median('performance'),lcp:median('lcp'),cls:median('cls')},runs};results.push(result);console.log(result.route,result.median);
