@@ -90,3 +90,45 @@ Para habilitar y verificar correo automático se necesitan secretos autorizados,
 Ver `docs/assets.md`, `docs/redirects.md` y `docs/verification.md` para procedencia, migración y límites reales de validación.
 
 La instrucción humana de secuencia 8 exime únicamente la prueba de zoom nativo al 200 % de AC-10. Ejecutar `npm run test:browser` para comprobar adaptación a 360/768/1440 px, axe, teclado y reflujo con texto ampliado. Esta última comprobación complementaria no se presenta como zoom nativo del navegador.
+
+## Portal local con endpoint real (sin correo automático)
+
+Base preparada por el orquestador: `3780ec8d9478ddc55e42a77a468cfaa0771874e6`
+(`HEAD` y `origin/main`). Las adaptaciones locales están en `scripts/local-server.ts`,
+`scripts/local-service.mjs` y `scripts/verify-local.ts`; no cambian el handler ni el frontend.
+Desde este worktree, con Node 22.23.2:
+
+```sh
+export PATH='/Users/lucaslodeiro/.local/opt/node-v22.23.2-darwin-arm64/bin:/usr/bin':"$PATH"
+npm run local:build
+npm run local:start
+cat .local/url
+npm run local:status
+npm run test:local
+npm run local:restart
+npm run local:stop
+```
+
+`local:start` registra un servicio launchd del usuario en macOS, identificado por
+un hash del worktree. Sobrevive al worker mientras siga abierta la sesión del usuario.
+`local:restart` y `local:stop` solo gestionan esa etiqueta. Los logs y la URL efectiva
+se guardan en `.local/`, excluido de Git. El puerto preferido es 4321; si está ocupado,
+se asigna otro libre sin detener procesos ajenos. El servidor escucha en 127.0.0.1.
+
+En esta ejecución, launchd rechazó el registro con `Bootstrap failed: 5: Input/output
+error` (plist válido; servicio no registrado). Hace falta que el entorno permita el
+registro en launchd o que el supervisor de Factory gestione este proceso antes de
+considerar completada la entrega persistente. `npm run local:serve` permite ejecutar
+el mismo adaptador en primer plano, pero no acredita persistencia después del worker.
+
+El adaptador fija vacías las tres credenciales de correo/antispam y no carga archivos
+de entorno. `local:build` genera preview no indexable sin clave pública de Turnstile;
+no añadir archivos `.env` al worktree para este modo. Los formularios ofrecen un
+borrador a info@openxpand.com y conservan sus valores. Hace falta un cliente de correo
+configurado y el usuario debe enviar el borrador; no hay envío automático.
+
+`test:local` verifica todos los archivos generados, redirecciones, 404 localizadas,
+rechazos HTTP y límites con Content-Length y transferencia por fragmentos. Comprueba
+los seis formularios en navegador contra el handler real y el contenido del mailto,
+sin abrir aplicaciones de correo. Usa el navegador supervisado por Factory cuando
+está disponible y cierra únicamente su propio contexto.
