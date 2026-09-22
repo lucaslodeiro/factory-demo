@@ -94,32 +94,30 @@ La instrucción humana de secuencia 8 exime únicamente la prueba de zoom nativo
 ## Portal local con endpoint real (sin correo automático)
 
 Base preparada por el orquestador: `3780ec8d9478ddc55e42a77a468cfaa0771874e6`
-(`HEAD` y `origin/main`). Las adaptaciones locales están en `scripts/local-server.ts`,
-`scripts/local-service.mjs` y `scripts/verify-local.ts`; no cambian el handler ni el frontend.
-Desde este worktree, con Node 22.23.2:
+(`origin/main`). Las adaptaciones locales están en `scripts/local-server.ts` y
+`scripts/verify-local.ts`; no cambian el handler ni el frontend. Desde este worktree,
+con Node 22.23.2:
 
 ```sh
 export PATH='/Users/lucaslodeiro/.local/opt/node-v22.23.2-darwin-arm64/bin:/usr/bin':"$PATH"
 npm run local:build
-npm run local:start
-cat .local/url
-npm run local:status
-npm run test:local
-npm run local:restart
-npm run local:stop
+npm run local:serve          # arranca en primer plano e imprime la URL efectiva
+cat .local/url               # misma URL, desde otra terminal
+npm run test:local           # verificación con el servidor en marcha
 ```
 
-`local:start` registra un servicio launchd del usuario en macOS, identificado por
-un hash del worktree. Sobrevive al worker mientras siga abierta la sesión del usuario.
-`local:restart` y `local:stop` solo gestionan esa etiqueta. Los logs y la URL efectiva
-se guardan en `.local/`, excluido de Git. El puerto preferido es 4321; si está ocupado,
-se asigna otro libre sin detener procesos ajenos. El servidor escucha en 127.0.0.1.
+`local:serve` ejecuta el adaptador en primer plano. Para detenerlo, `Ctrl+C` en su
+terminal; para reiniciarlo, volver a ejecutar `npm run local:serve`. Si se lanzó en
+segundo plano, detener únicamente ese PID
+(`lsof -nP -iTCP:<puerto> -sTCP:LISTEN`), nunca procesos ajenos. La URL efectiva se
+guarda en `.local/url`, excluido de Git. El puerto preferido es 4321; si está ocupado,
+se asigna otro libre sin detener procesos ajenos. El servidor escucha solo en 127.0.0.1.
 
-En esta ejecución, launchd rechazó el registro con `Bootstrap failed: 5: Input/output
-error` (plist válido; servicio no registrado). Hace falta que el entorno permita el
-registro en launchd o que el supervisor de Factory gestione este proceso antes de
-considerar completada la entrega persistente. `npm run local:serve` permite ejecutar
-el mismo adaptador en primer plano, pero no acredita persistencia después del worker.
+El proceso vive mientras dure su terminal: no es un servicio persistente. Registrar un
+servicio del sistema (launchd u otro gestor) desde el worktree está prohibido para los
+workers de Factory, así que una URL disponible después de la sesión requiere que una
+persona ejecute `npm run local:serve` en su propia terminal o que el supervisor del
+entorno adopte el proceso.
 
 El adaptador fija vacías las tres credenciales de correo/antispam y no carga archivos
 de entorno. `local:build` genera preview no indexable sin clave pública de Turnstile;

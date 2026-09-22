@@ -18,10 +18,6 @@
     "capture": "node scripts/capture.mjs",
     "local:build": "PUBLIC_SITE_ENV=preview PUBLIC_TURNSTILE_SITE_KEY= npm run build",
     "local:serve": "tsx scripts/local-server.ts",
-    "local:start": "node scripts/local-service.mjs start",
-    "local:restart": "node scripts/local-service.mjs restart",
-    "local:stop": "node scripts/local-service.mjs stop",
-    "local:status": "node scripts/local-service.mjs status",
     "test:local": "tsx scripts/verify-local.ts"
   },
   "dependencies": {
