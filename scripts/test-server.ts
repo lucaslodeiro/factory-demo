@@ -1,7 +1,8 @@
 // Local-only verification server. Never deployed; external fetches are explicitly simulated.
 import http from 'node:http';import fs from 'node:fs/promises';import path from 'node:path';
 import {handleContact} from '../src/lib/contact';
-const host='http://127.0.0.1:4321';
+// PORT lets a run bind a free port when 4321 is held by another checkout's server.
+const port=Number(process.env.PORT||4321);const host=`http://127.0.0.1:${port}`;
 const server=http.createServer(async(req,res)=>{try{
  const url=new URL(req.url!,host);
  if(url.pathname==='/'){res.writeHead(301,{Location:'/es/'});res.end();return;}
@@ -18,4 +19,4 @@ const server=http.createServer(async(req,res)=>{try{
  const body=await fs.readFile(file);const mime:Record<string,string>={'.html':'text/html','.js':'application/javascript','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp','.xml':'application/xml','.txt':'text/plain'};
  res.writeHead(code,{'Content-Type':mime[path.extname(file)]||'application/octet-stream'});res.end(body);
  }catch{res.writeHead(500);res.end('Local verification error');}});
-server.listen(4321,'127.0.0.1',()=>console.log('Local production-build verification server: '+host));
+server.listen(port,'127.0.0.1',()=>console.log('Local production-build verification server: '+host));

@@ -1,9 +1,54 @@
-import {test,expect} from './fixtures';import AxeBuilder from '@axe-core/playwright';
+import {test,expect,origin} from './fixtures';import AxeBuilder from '@axe-core/playwright';
 const templates=['','apis/','apis/sim-swap/','developers/','operators/','contact/apis/','contact/demo/','privacy/','404/'];
 for(const locale of ['es','en','pt'])test(`locale ${locale}: audience paths, ten APIs and equivalent languages`,async({page})=>{
  await page.goto(`/${locale}/`);await expect(page.locator('h1')).toHaveCount(1);for(const intent of ['apis','demo'])await expect(page.locator(`.hero a[href="/${locale}/contact/${intent}/"]`)).toBeVisible();
  await page.goto(`/${locale}/apis/`);await expect(page.locator('.api-card')).toHaveCount(10);
  for(const path of templates){await page.goto(`/${locale}/${path}`);await expect(page.locator('html')).toHaveAttribute('lang',locale);for(const target of ['es','en','pt'])await expect(page.locator(`.languages a[lang=${target}]`)).toHaveAttribute('href',`/${target}/${path}`);}
+});
+for(const locale of ['es','en','pt'])test(`locale ${locale}: redesigned home sections and grouped footer`,async({page})=>{
+ await page.goto(`/${locale}/`);
+ // The whole navigation stays visible and the header carries the primary call to action.
+ await expect(page.locator('header .main-nav a')).toHaveCount(3);
+ await expect(page.locator(`header .nav-cta[href="/${locale}/contact/apis/"]`)).toBeVisible();
+ // Hero: one h1, both conversion paths and an artifact built from the real catalog.
+ await expect(page.locator('h1')).toHaveCount(1);
+ await expect(page.locator(`.hero a.button.peach[href="/${locale}/contact/apis/"]`)).toBeVisible();
+ await expect(page.locator(`.hero a.button.outline[href="/${locale}/contact/demo/"]`)).toBeVisible();
+ await expect(page.locator('.hero .chips li')).toHaveCount(10);
+ // Audiences: each profile labelled, with its journey and the call to action matching its intent.
+ const audiences=page.locator('#audiences .audience-card');await expect(audiences).toHaveCount(2);
+ for(const [index,journey,intent] of [[0,'developers','apis'],[1,'operators','demo']] as const){
+  await expect(audiences.nth(index).locator(`a[href="/${locale}/${journey}/"]`)).toBeVisible();
+  await expect(audiences.nth(index).locator(`a[href="/${locale}/contact/${intent}/"]`)).toBeVisible();
+ }
+ // Capabilities: ten families in labelled groups, each one reaching its own page.
+ await expect(page.locator('#capabilities .api-group .group-heading h3')).toHaveCount(4);
+ const families=page.locator('#capabilities .api-card h4 a');await expect(families).toHaveCount(10);
+ for(const href of await families.evaluateAll(links=>links.map(link=>link.getAttribute('href'))))expect(href).toMatch(new RegExp(`^/${locale}/apis/[a-z-]+/$`));
+ await expect(page.locator('#capabilities .api-card p').first()).not.toBeEmpty();
+ // How to start, responsibility instead of invented social proof, and the closing band.
+ await expect(page.locator('#start ol.steps li')).toHaveCount(3);
+ await expect(page.locator('#start a.button')).toHaveAttribute('href',`/${locale}/contact/apis/`);
+ await expect(page.locator('#trust article')).toHaveCount(4);
+ await expect(page.locator(`#trust a[href="/${locale}/privacy/"]`)).toBeVisible();
+ const band=page.locator('.cta-band');
+ for(const intent of ['apis','demo'])await expect(band.locator(`a[href="/${locale}/contact/${intent}/"]`)).toBeVisible();
+ await expect(band.locator('a[href="mailto:info@openxpand.com"]')).toBeVisible();
+ // Grouped footer, with the language links still pointing at the equivalent route.
+ await expect(page.locator('footer nav')).toHaveCount(4);
+ await expect(page.locator('footer .footer-title')).toHaveCount(5);
+ for(const target of ['es','en','pt'])await expect(page.locator(`.footer-languages a[lang=${target}]`)).toHaveAttribute('href',`/${target}/`);
+ // The home page still ships no JavaScript of its own.
+ await expect(page.locator('script:not([type="application/ld+json"])')).toHaveCount(0);
+});
+for(const width of [360,1440])test(`first screen at ${width}px carries brand, headline and both calls to action`,async({page})=>{
+ await page.setViewportSize({width,height:width===360?640:900});
+ await page.goto('/es/');
+ for(const selector of ['header .brand img','.hero h1','.hero .lead','.hero a.button.peach[href="/es/contact/apis/"]','.hero a.button.outline[href="/es/contact/demo/"]']){
+  const box=await page.locator(selector).boundingBox();
+  expect(box,selector).not.toBeNull();
+  expect(box!.y+box!.height,`${selector} below the fold`).toBeLessThanOrEqual(page.viewportSize()!.height);
+ }
 });
 for(const width of [360,768,1440])test(`responsive, axe and keyboard at ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:1000});
@@ -17,7 +62,7 @@ test('200% equivalent viewport reflow and keyboard navigation',async({page})=>{
 async function enableToken(page:import('@playwright/test').Page,intent:string){await page.evaluate(intent=>{window.turnstile={render:(_el,options)=>{(options.callback as (v:string)=>void)(intent==='demo'?'demo-token':'apis-token');return 'test-widget';},reset:()=>{}};window.onTurnstileReady?.();},intent);}
 for(const locale of ['es','en','pt'])for(const intent of ['apis','demo'])test(`contact ${locale}/${intent}: errors, retry, pending and success`,async({page})=>{
  await page.route('https://challenges.cloudflare.com/**',r=>r.abort());
- await page.goto(`/${locale}/contact/${intent}/?api=sim-swap`);await expect(page.locator('#api')).toHaveValue('sim-swap');await expect(page.locator('.languages a[lang=en]')).toHaveAttribute('href',`http://127.0.0.1:4321/en/contact/${intent}/?api=sim-swap`);
+ await page.goto(`/${locale}/contact/${intent}/?api=sim-swap`);await expect(page.locator('#api')).toHaveValue('sim-swap');await expect(page.locator('.languages a[lang=en]')).toHaveAttribute('href',`${origin}/en/contact/${intent}/?api=sim-swap`);
  await page.locator('button[type=submit]').click();await expect(page.locator('#name')).toHaveAttribute('aria-invalid','true');
  await page.locator('#name').fill('Synthetic Tester');await page.locator('#email').fill('synthetic@example.test');await page.locator('#company').fill('Synthetic Company');await page.locator('#message').fill('Synthetic browser request');await enableToken(page,intent);
  const payloads:Record<string,unknown>[]=[];await page.route('**/api/contact',async route=>{payloads.push(route.request().postDataJSON());await new Promise(r=>setTimeout(r,200));await route.fulfill({status:503,contentType:'application/json',body:'{"error":"retry"}'});});

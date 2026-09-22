@@ -44,4 +44,12 @@ export const catalog = [
 ] as const;
 export type ApiId = typeof catalog[number]['id'];
 export type Intent = 'apis' | 'demo';
+// Reading aid only: the groups order the catalog by the problem each family addresses.
+// They are not a commercial packaging and imply nothing about joint availability.
+export const apiGroups = [
+ {id:'identity', apis:['sim-swap','number-verification','device-swap','know-your-customer']},
+ {id:'location', apis:['location-verification','location-retrieval']},
+ {id:'connectivity', apis:['device-status','quality-on-demand']},
+ {id:'messaging', apis:['one-time-password-sms','sms']},
+] as const satisfies readonly {id:string; apis:readonly ApiId[]}[];
 export const paths = ['', 'developers/', 'operators/', 'apis/', ...catalog.map(a=>`apis/${a.id}/`), 'contact/apis/', 'contact/demo/', 'privacy/', '404/'];
