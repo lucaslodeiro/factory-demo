@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-21T22:05:42.239Z",
+  "date": "2026-09-22T19:09:35.422Z",
   "runtime": "v22.23.2",
   "platform": "darwin/arm64",
   "note": "Production static build; Lighthouse mobile default simulated throttling; cold cache each run; supervisor-owned Chrome when FACTORY_BROWSER_DEBUG_PORT is set. Public Turnstile test key on contact; no mail credentials.",
@@ -8,43 +8,43 @@
       "route": "/es/",
       "median": {
         "performance": 100,
-        "lcp": 901.6289999999999,
+        "lcp": 1126.0558,
         "cls": 0
       },
       "runs": [
         {
           "performance": 100,
-          "lcp": 902.7292,
+          "lcp": 1126.035,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3942,
+            "benchmarkIndex": 4154,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 901.4870000000001,
+          "lcp": 1126.0558,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3906.5,
+            "benchmarkIndex": 4176,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 901.6289999999999,
+          "lcp": 1126.0941,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3907.5,
+            "benchmarkIndex": 4147.5,
             "credits": {}
           }
         }
@@ -54,43 +54,43 @@
       "route": "/es/apis/",
       "median": {
         "performance": 100,
-        "lcp": 901.2321,
+        "lcp": 901.0952,
         "cls": 0
       },
       "runs": [
         {
           "performance": 100,
-          "lcp": 902.3367000000001,
+          "lcp": 901.0545999999999,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3925.5,
+            "benchmarkIndex": 4143.5,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 901.2321,
+          "lcp": 901.0952,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3977.5,
+            "benchmarkIndex": 4145,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 901.1632999999999,
+          "lcp": 901.2751000000001,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3750,
+            "benchmarkIndex": 4174,
             "credits": {}
           }
         }
@@ -100,43 +100,43 @@
       "route": "/es/apis/sim-swap/",
       "median": {
         "performance": 100,
-        "lcp": 901.3732,
+        "lcp": 900.9963,
         "cls": 0
       },
       "runs": [
         {
           "performance": 100,
-          "lcp": 901.3732,
+          "lcp": 901.2130999999999,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 4005,
+            "benchmarkIndex": 4113.5,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 904.0453,
+          "lcp": 900.9963,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3892,
+            "benchmarkIndex": 4161.5,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 901.1907000000001,
+          "lcp": 900.903,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3668,
+            "benchmarkIndex": 4138,
             "credits": {}
           }
         }
@@ -146,43 +146,43 @@
       "route": "/es/operators/",
       "median": {
         "performance": 100,
-        "lcp": 1276.7373,
+        "lcp": 1276.084,
         "cls": 0
       },
       "runs": [
         {
           "performance": 100,
-          "lcp": 1277.6559,
+          "lcp": 1276.084,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3889.5,
+            "benchmarkIndex": 4166,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 1276.7373,
+          "lcp": 1276.2778,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3790.5,
+            "benchmarkIndex": 4158.5,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 1201.8294,
+          "lcp": 1276.0809,
           "cls": 0,
           "externalRequests": [],
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3823,
+            "benchmarkIndex": 4144.5,
             "credits": {}
           }
         }
@@ -192,46 +192,13 @@
       "route": "/es/contact/apis/",
       "median": {
         "performance": 100,
-        "lcp": 925.5345,
+        "lcp": 1685.4963999999998,
         "cls": 0
       },
       "runs": [
         {
           "performance": 100,
-          "lcp": 925.5345,
-          "cls": 0,
-          "externalRequests": [
-            {
-              "url": "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileReady&render=explicit",
-              "bytes": 212,
-              "status": 302
-            },
-            {
-              "url": "https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js",
-              "bytes": 28134,
-              "status": 200
-            },
-            {
-              "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/1y3b4/1x00000000000000000000AA/auto/fbE/new/flexible?lang=es",
-              "bytes": 93112,
-              "status": 200
-            },
-            {
-              "url": "blob:https://challenges.cloudflare.com/02d8ceb8-465d-48a8-a207-2e5a8d5c91f1",
-              "bytes": 0,
-              "status": -1
-            }
-          ],
-          "environment": {
-            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
-            "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3733.5,
-            "credits": {}
-          }
-        },
-        {
-          "performance": 100,
-          "lcp": 1682.3035,
+          "lcp": 1685.4963999999998,
           "cls": 0,
           "externalRequests": [
             {
@@ -240,17 +207,17 @@
               "status": 302
             },
             {
-              "url": "https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js",
-              "bytes": 28326,
+              "url": "https://challenges.cloudflare.com/turnstile/v0/b/d76008a69eab/api.js",
+              "bytes": 28366,
               "status": 200
             },
             {
-              "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/k0v48/1x00000000000000000000AA/auto/fbE/new/flexible?lang=es",
-              "bytes": 95501,
+              "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/turnstile/f/av0/rch/5g2sw/1x00000000000000000000AA/auto/fbE/new/flexible?lang=es",
+              "bytes": 94892,
               "status": 200
             },
             {
-              "url": "blob:https://challenges.cloudflare.com/fc2cac0e-fbb2-461f-8c44-4498bb2b697a",
+              "url": "blob:https://challenges.cloudflare.com/7c902684-73c5-44ab-862e-de2d4b06b592",
               "bytes": 0,
               "status": -1
             }
@@ -258,13 +225,13 @@
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3701,
+            "benchmarkIndex": 4166.5,
             "credits": {}
           }
         },
         {
           "performance": 100,
-          "lcp": 901.1394,
+          "lcp": 901.3431,
           "cls": 0,
           "externalRequests": [
             {
@@ -273,17 +240,17 @@
               "status": 302
             },
             {
-              "url": "https://challenges.cloudflare.com/turnstile/v0/g/330e41bb475c/api.js",
-              "bytes": 28263,
+              "url": "https://challenges.cloudflare.com/turnstile/v0/b/d76008a69eab/api.js",
+              "bytes": 28330,
               "status": 200
             },
             {
-              "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/f/av0/rch/v02q8/1x00000000000000000000AA/auto/fbE/new/flexible?lang=es",
-              "bytes": 95348,
+              "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/turnstile/f/av0/rch/xk54d/1x00000000000000000000AA/auto/fbE/new/flexible?lang=es",
+              "bytes": 94458,
               "status": 200
             },
             {
-              "url": "blob:https://challenges.cloudflare.com/20e7b5ab-3b6b-4c19-9164-355bf7ac6fc0",
+              "url": "blob:https://challenges.cloudflare.com/c0009b96-7afb-460d-bcfb-7d709b2c8f3f",
               "bytes": 0,
               "status": -1
             }
@@ -291,7 +258,40 @@
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3792.5,
+            "benchmarkIndex": 4146,
+            "credits": {}
+          }
+        },
+        {
+          "performance": 98,
+          "lcp": 1971.7779,
+          "cls": 0,
+          "externalRequests": [
+            {
+              "url": "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileReady&render=explicit",
+              "bytes": 59,
+              "status": 302
+            },
+            {
+              "url": "https://challenges.cloudflare.com/turnstile/v0/b/d76008a69eab/api.js",
+              "bytes": 28294,
+              "status": 200
+            },
+            {
+              "url": "https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/turnstile/f/av0/rch/j3x2h/1x00000000000000000000AA/auto/fbE/new/flexible?lang=es",
+              "bytes": 96730,
+              "status": 200
+            },
+            {
+              "url": "blob:https://challenges.cloudflare.com/5f0fd27d-3f91-45b0-8e34-d1db5f4b3cfd",
+              "bytes": 0,
+              "status": -1
+            }
+          ],
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Mobile Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+            "benchmarkIndex": 4140.5,
             "credits": {}
           }
         }

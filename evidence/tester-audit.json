@@ -1,0 +1,162 @@
+{
+ "origin": "http://127.0.0.1:4405",
+ "checkedAt": "2026-09-22T20:20:07.589Z",
+ "browser": "153.0.8010.53",
+ "results": [
+  {
+   "id": "AC-6 header es@360",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/es/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-1 first screen es@360",
+   "ok": true,
+   "detail": "[[\".hero h1\",true],[\".hero .lead\",true],[\".hero a.button.peach\",true],[\".hero a.button.outline\",true]]"
+  },
+  {
+   "id": "AC-6 header es@768",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/es/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-6 header es@1440",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/es/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-1 first screen es@1440",
+   "ok": true,
+   "detail": "[[\".hero h1\",true],[\".hero .lead\",true],[\".hero a.button.peach\",true],[\".hero a.button.outline\",true]]"
+  },
+  {
+   "id": "AC-6 header en@360",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/en/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-1 first screen en@360",
+   "ok": true,
+   "detail": "[[\".hero h1\",true],[\".hero .lead\",true],[\".hero a.button.peach\",true],[\".hero a.button.outline\",true]]"
+  },
+  {
+   "id": "AC-6 header en@768",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/en/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-6 header en@1440",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/en/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-1 first screen en@1440",
+   "ok": true,
+   "detail": "[[\".hero h1\",true],[\".hero .lead\",true],[\".hero a.button.peach\",true],[\".hero a.button.outline\",true]]"
+  },
+  {
+   "id": "AC-6 header pt@360",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/pt/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-1 first screen pt@360",
+   "ok": true,
+   "detail": "[[\".hero h1\",true],[\".hero .lead\",true],[\".hero a.button.peach\",true],[\".hero a.button.outline\",true]]"
+  },
+  {
+   "id": "AC-6 header pt@768",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/pt/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-6 header pt@1440",
+   "ok": true,
+   "detail": "{\"brand\":true,\"navLinks\":[true,true,true],\"langLinks\":[true,true,true],\"cta\":true,\"ctaHref\":\"/pt/contact/apis/\",\"overflow\":true}"
+  },
+  {
+   "id": "AC-1 first screen pt@1440",
+   "ok": true,
+   "detail": "[[\".hero h1\",true],[\".hero .lead\",true],[\".hero a.button.peach\",true],[\".hero a.button.outline\",true]]"
+  },
+  {
+   "id": "AC-2 audiences es",
+   "ok": true,
+   "detail": "[{\"eyebrow\":\"EMPRESAS Y DESARROLLADORES\",\"links\":[\"/es/contact/apis/\",\"/es/developers/\"],\"points\":3},{\"eyebrow\":\"OPERADORES DE TELECOMUNICACIONES\",\"links\":[\"/es/contact/demo/\",\"/es/operators/\"],\"points\":3}]"
+  },
+  {
+   "id": "AC-3 capabilities es",
+   "ok": true,
+   "detail": "{\"groups\":[\"Identidad y antifraude\",\"Ubicación\",\"Conectividad y calidad\",\"Mensajería\"],\"cards\":10,\"minDesc\":73}"
+  },
+  {
+   "id": "AC-6 closing es",
+   "ok": true,
+   "detail": "{\"steps\":3,\"trust\":4,\"band\":[\"/es/contact/apis/\",\"/es/contact/demo/\",\"mailto:info@openxpand.com\"]}"
+  },
+  {
+   "id": "AC-2 audiences en",
+   "ok": true,
+   "detail": "[{\"eyebrow\":\"BUSINESSES AND DEVELOPERS\",\"links\":[\"/en/contact/apis/\",\"/en/developers/\"],\"points\":3},{\"eyebrow\":\"TELECOMMUNICATIONS OPERATORS\",\"links\":[\"/en/contact/demo/\",\"/en/operators/\"],\"points\":3}]"
+  },
+  {
+   "id": "AC-3 capabilities en",
+   "ok": true,
+   "detail": "{\"groups\":[\"Identity and anti-fraud\",\"Location\",\"Connectivity and quality\",\"Messaging\"],\"cards\":10,\"minDesc\":59}"
+  },
+  {
+   "id": "AC-6 closing en",
+   "ok": true,
+   "detail": "{\"steps\":3,\"trust\":4,\"band\":[\"/en/contact/apis/\",\"/en/contact/demo/\",\"mailto:info@openxpand.com\"]}"
+  },
+  {
+   "id": "AC-2 audiences pt",
+   "ok": true,
+   "detail": "[{\"eyebrow\":\"EMPRESAS E DESENVOLVEDORES\",\"links\":[\"/pt/contact/apis/\",\"/pt/developers/\"],\"points\":3},{\"eyebrow\":\"OPERADORAS DE TELECOMUNICAÇÕES\",\"links\":[\"/pt/contact/demo/\",\"/pt/operators/\"],\"points\":3}]"
+  },
+  {
+   "id": "AC-3 capabilities pt",
+   "ok": true,
+   "detail": "{\"groups\":[\"Identidade e antifraude\",\"Localização\",\"Conectividade e qualidade\",\"Mensageria\"],\"cards\":10,\"minDesc\":71}"
+  },
+  {
+   "id": "AC-6 closing pt",
+   "ok": true,
+   "detail": "{\"steps\":3,\"trust\":4,\"band\":[\"/pt/contact/apis/\",\"/pt/contact/demo/\",\"mailto:info@openxpand.com\"]}"
+  },
+  {
+   "id": "AC-3 all capability links resolve",
+   "ok": true,
+   "detail": "checked 30 links across three locales"
+  },
+  {
+   "id": "AC-9 no-JS home es",
+   "ok": true,
+   "detail": "{\"h1\":1,\"apiCards\":10,\"heroCtas\":10,\"ownScripts\":0}"
+  },
+  {
+   "id": "AC-9 no-JS navigation es",
+   "ok": true,
+   "detail": "reached http://127.0.0.1:4405/es/contact/apis/ and the form markup is present"
+  },
+  {
+   "id": "AC-9 no-JS home en",
+   "ok": true,
+   "detail": "{\"h1\":1,\"apiCards\":10,\"heroCtas\":10,\"ownScripts\":0}"
+  },
+  {
+   "id": "AC-9 no-JS navigation en",
+   "ok": true,
+   "detail": "reached http://127.0.0.1:4405/en/contact/apis/ and the form markup is present"
+  },
+  {
+   "id": "AC-9 no-JS home pt",
+   "ok": true,
+   "detail": "{\"h1\":1,\"apiCards\":10,\"heroCtas\":10,\"ownScripts\":0}"
+  },
+  {
+   "id": "AC-9 no-JS navigation pt",
+   "ok": true,
+   "detail": "reached http://127.0.0.1:4405/pt/contact/apis/ and the form markup is present"
+  }
+ ]
+}
