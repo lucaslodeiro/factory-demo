@@ -90,3 +90,66 @@ Para habilitar y verificar correo automático se necesitan secretos autorizados,
 Ver `docs/assets.md`, `docs/redirects.md` y `docs/verification.md` para procedencia, migración y límites reales de validación.
 
 La instrucción humana de secuencia 8 exime únicamente la prueba de zoom nativo al 200 % de AC-10. Ejecutar `npm run test:browser` para comprobar adaptación a 360/768/1440 px, axe, teclado y reflujo con texto ampliado. Esta última comprobación complementaria no se presenta como zoom nativo del navegador.
+
+## Portal local con endpoint real (sin correo automático)
+
+Base preparada por el orquestador: `3780ec8d9478ddc55e42a77a468cfaa0771874e6`
+(`origin/main`). Las adaptaciones locales están en `scripts/local-server.ts` y
+`scripts/verify-local.ts`; no cambian el handler ni el frontend. Desde este worktree,
+con Node 22.23.2:
+
+```sh
+export PATH='/Users/lucaslodeiro/.local/opt/node-v22.23.2-darwin-arm64/bin:/usr/bin':"$PATH"
+npm run local:build
+LOCAL_HOSTS=192.168.4.30,100.77.212.98,127.0.0.1 LOCAL_PORT=4330 npm run local:serve
+cat .local/url               # todas las URLs efectivas, la primaria primero
+npm run test:local           # verificación con el servidor en marcha
+```
+
+`local:serve` ejecuta el adaptador en primer plano y escribe las URLs efectivas en
+`.local/url`, excluido de Git. El puerto por defecto sigue siendo 4321, pero en esta
+máquina lo ocupa otro proceso ajeno; se fija 4330 para que la URL entregada no cambie en
+cada reinicio. Si el puerto elegido está ocupado, se asigna otro libre para todos los
+hosts, sin detener procesos ajenos, y la URL efectiva cambia.
+
+`LOCAL_HOSTS` es la lista de direcciones a las que se enlaza, una por escucha y nunca
+`0.0.0.0`; por defecto solo `127.0.0.1`. La decisión humana de secuencia 15 pidió además
+la IP de red local (`192.168.4.30`) y la de Tailscale (`100.77.212.98`). Solo se atienden
+peticiones cuyo `Host` esté en esa lista más `localhost`, con el puerto efectivo: cualquier
+otro `Host` recibe 403 antes de tocar archivos o la API, y ese valor validado es el que
+fija el origen del `Request` y `SITE_ORIGIN`. `192.168.4.30` es una concesión DHCP: si el
+router la cambia, el arranque falla y hay que reiniciar con la dirección nueva.
+
+Los hosts de red se sirven por HTTPS con un certificado autofirmado generado al arrancar
+en `.local/` (30 días, reutilizado mientras no cambie la lista de hosts); el navegador pide
+aceptarlo una vez por dispositivo. No es cosmético: sobre HTTP simple una IP de red no es
+contexto seguro, `crypto.randomUUID()` no existe y `src/scripts/contact.ts` no llega a
+instalar su manejador, de modo que el formulario haría un envío nativo y el endpoint
+respondería 415. El loopback sigue en HTTP porque ya es contexto seguro.
+
+La supervivencia del proceso la aporta el supervisor de Factory, que arranca
+`local:serve` con esas variables y conserva su ciclo de vida más allá de la ejecución del
+worker. Los workers no registran servicios del sistema (launchd u otro gestor) desde el
+worktree. Para operarlo manualmente:
+
+```sh
+cat .local/url                                   # URLs activas
+lsof -nP -iTCP:<puerto> -sTCP:LISTEN             # su PID, repetido por host enlazado
+kill <pid>                                       # detener solo ese PID, nunca otros
+LOCAL_HOSTS=192.168.4.30,100.77.212.98,127.0.0.1 LOCAL_PORT=4330 npm run local:serve
+```
+
+El adaptador fija vacías las tres credenciales de correo/antispam y no carga archivos
+de entorno. `local:build` genera preview no indexable sin clave pública de Turnstile;
+no añadir archivos `.env` al worktree para este modo. Los formularios ofrecen un
+borrador a info@openxpand.com y conservan sus valores. Hace falta un cliente de correo
+configurado y el usuario debe enviar el borrador; no hay envío automático.
+
+`test:local` recorre todas las URLs de `.local/url`: en cada origen verifica los archivos
+generados, redirecciones, 404 localizadas, rechazos HTTP, límites con Content-Length y
+transferencia por fragmentos, y el 403 por `Host` fuera de la lista. En el origen primario
+comprueba los seis formularios en navegador contra el handler real y el contenido del
+mailto, con un envío de humo en los demás orígenes de red, sin abrir aplicaciones de
+correo. Solo ese cliente de verificación acepta el certificado autofirmado. Usa el
+navegador supervisado por Factory cuando está disponible y cierra únicamente su propio
+contexto.

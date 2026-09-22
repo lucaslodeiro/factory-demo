@@ -15,7 +15,10 @@
     "test:browser": "playwright test",
     "test:performance": "node scripts/performance.mjs",
     "test:server": "tsx scripts/test-server.ts",
-    "capture": "node scripts/capture.mjs"
+    "capture": "node scripts/capture.mjs",
+    "local:build": "PUBLIC_SITE_ENV=preview PUBLIC_TURNSTILE_SITE_KEY= npm run build",
+    "local:serve": "tsx scripts/local-server.ts",
+    "test:local": "tsx scripts/verify-local.ts"
   },
   "dependencies": {
     "astro": "^7.3.3"
