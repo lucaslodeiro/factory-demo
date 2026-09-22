@@ -106,18 +106,22 @@ cat .local/url               # misma URL, desde otra terminal
 npm run test:local           # verificación con el servidor en marcha
 ```
 
-`local:serve` ejecuta el adaptador en primer plano. Para detenerlo, `Ctrl+C` en su
-terminal; para reiniciarlo, volver a ejecutar `npm run local:serve`. Si se lanzó en
-segundo plano, detener únicamente ese PID
-(`lsof -nP -iTCP:<puerto> -sTCP:LISTEN`), nunca procesos ajenos. La URL efectiva se
-guarda en `.local/url`, excluido de Git. El puerto preferido es 4321; si está ocupado,
-se asigna otro libre sin detener procesos ajenos. El servidor escucha solo en 127.0.0.1.
+`local:serve` ejecuta el adaptador en primer plano y escribe la URL efectiva en
+`.local/url`, excluido de Git. El puerto preferido es 4321; si está ocupado, se asigna
+otro libre sin detener procesos ajenos. El servidor escucha solo en 127.0.0.1: no
+responde en la IP de red local.
 
-El proceso vive mientras dure su terminal: no es un servicio persistente. Registrar un
-servicio del sistema (launchd u otro gestor) desde el worktree está prohibido para los
-workers de Factory, así que una URL disponible después de la sesión requiere que una
-persona ejecute `npm run local:serve` en su propia terminal o que el supervisor del
-entorno adopte el proceso.
+La supervivencia del proceso la aporta el supervisor de Factory, que arranca
+`local:serve` y conserva su ciclo de vida más allá de la ejecución del worker. Los
+workers no registran servicios del sistema (launchd u otro gestor) desde el worktree.
+Para operarlo manualmente:
+
+```sh
+cat .local/url                                   # URL activa
+lsof -nP -iTCP:<puerto> -sTCP:LISTEN             # PID exacto de este servicio
+kill <pid>                                       # detener solo ese PID, nunca otros
+npm run local:serve                              # reiniciar
+```
 
 El adaptador fija vacías las tres credenciales de correo/antispam y no carga archivos
 de entorno. `local:build` genera preview no indexable sin clave pública de Turnstile;
