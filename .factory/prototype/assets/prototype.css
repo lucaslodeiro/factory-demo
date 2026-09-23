@@ -1,0 +1,53 @@
+/* Prototype-only additions on top of the copied global.css tokens.
+   These classes do not exist in the real codebase yet — the Builder defines the final markup/CSS. */
+
+/* Language dropdown: replaces the flat .languages link list with a <details> disclosure. */
+.lang-switch{position:relative;margin-left:var(--space-1)}
+.lang-switch summary{display:flex;align-items:center;gap:6px;list-style:none;cursor:pointer;padding:8px 10px;border:1px solid transparent;border-radius:var(--radius-s);font-size:.88rem;color:var(--on-dark);user-select:none}
+.lang-switch summary::-webkit-details-marker{display:none}
+.lang-switch summary:hover{border-color:var(--on-dark-line)}
+.lang-switch svg{flex-shrink:0}
+.lang-switch[open] summary{border-color:var(--on-dark-line)}
+.lang-switch-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);box-shadow:var(--shadow-lift);padding:6px;list-style:none;margin:0;z-index:20}
+.lang-switch-menu li{margin:0}
+.lang-switch-menu a{display:block;padding:9px 12px;border-radius:var(--radius-s);color:var(--text);font-size:.92rem;text-decoration:none}
+.lang-switch-menu a:hover{background:var(--muted)}
+.lang-switch-menu a[aria-current=true]{color:var(--purple);font-weight:700;background:var(--muted)}
+
+/* Header CTA group: text link -> outline button -> primary button, replacing the single nav-cta. */
+.nav-actions{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0;margin-left:var(--space-1)}
+.nav-actions .text-link{color:var(--on-dark);font-size:.88rem}
+.nav-actions .button{padding:10px 18px;min-height:44px;font-size:.85rem}
+
+@media(max-width:950px){
+ .lang-switch{margin-left:0;order:5}
+ .nav-actions{order:6;flex-basis:100%;justify-content:flex-end}
+}
+@media(max-width:600px){
+ .nav-actions{gap:var(--space-1)}
+ .nav-actions .button{padding:8px 12px;font-size:.78rem}
+ .nav-actions .text-link{font-size:.78rem}
+}
+
+/* Auth preview screens (signup/login) */
+.auth-shell{background:var(--muted);padding:var(--space-6) 0}
+.auth-card{max-width:460px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);box-shadow:var(--shadow-lift);padding:var(--space-4)}
+.auth-card h1{font-size:1.7rem;margin-bottom:var(--space-1)}
+.preview-badge{display:inline-flex;align-items:center;gap:6px;background:var(--muted);color:var(--purple);font-weight:700;font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:30px;margin-bottom:var(--space-3)}
+.auth-card .lead{margin-bottom:var(--space-3);font-size:1rem}
+.auth-card .button{width:100%;margin-top:var(--space-1)}
+.auth-switch{text-align:center;margin-top:var(--space-3);font-size:.92rem;color:var(--text-soft)}
+.preview-banner{display:none;background:var(--muted);border:1px solid var(--line-strong);border-radius:var(--radius-m);padding:var(--space-3);margin-top:var(--space-3);color:var(--text)}
+.preview-banner[data-visible=true]{display:block}
+.preview-banner strong{color:var(--purple)}
+
+/* Contact chooser */
+.chooser-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3);margin-top:var(--space-4)}
+.chooser-card{display:block;text-decoration:none;color:inherit;padding:var(--space-4);border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;box-shadow:var(--shadow-card);transition:border-color var(--base),box-shadow var(--base),transform var(--base)}
+.chooser-card:hover{border-color:var(--line-strong);box-shadow:var(--shadow-lift);transform:translateY(-2px)}
+.chooser-card .eyebrow{margin-bottom:var(--space-1)}
+.chooser-card h2{font-size:1.35rem;margin-bottom:var(--space-1)}
+.chooser-card p{margin-bottom:0;color:var(--text-soft)}
+@media(max-width:900px){.chooser-grid{grid-template-columns:1fr}}
+
+.proto-note{background:var(--peach);color:var(--ink);text-align:center;font-weight:700;font-size:.85rem;padding:8px}

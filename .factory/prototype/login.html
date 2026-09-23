@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Login — prototipo OpenXpand</title>
+<link rel="stylesheet" href="assets/global.css"/>
+<link rel="stylesheet" href="assets/prototype.css"/>
+</head>
+<body>
+<p class="proto-note">PROTOTIPO — esta pantalla no inicia sesión ni envía datos</p>
+<a class="skip" href="#main">Ir al contenido</a>
+<header>
+<div class="nav-shell">
+<a class="brand" href="home.html" aria-label="OpenXpand — inicio"><img src="assets/logo.svg" width="170" height="39" alt="OpenXpand"/></a>
+<nav class="main-nav" aria-label="Navegación principal">
+<a href="#">Catálogo de APIs</a>
+<a href="#">Desarrolladores</a>
+<a href="#">Operadores</a>
+</nav>
+<details class="lang-switch">
+<summary aria-label="Idioma: Español"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg>Español</summary>
+<ul class="lang-switch-menu">
+<li><a href="login.html" lang="es" hreflang="es" aria-current="true">Español</a></li>
+<li><a href="login.html" lang="en" hreflang="en">English</a></li>
+<li><a href="login.html" lang="pt" hreflang="pt">Português</a></li>
+</ul>
+</details>
+<div class="nav-actions">
+<a class="text-link" href="login.html" aria-current="page">Login</a>
+<a class="button outline" href="contact.html">Contáctanos</a>
+<a class="button peach" href="signup.html">Registrarse</a>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="auth-shell">
+<div class="wrap">
+<div class="auth-card">
+<span class="preview-badge">Vista previa</span>
+<h1>Iniciá sesión</h1>
+<p class="lead">Accedé al futuro panel de control para gestionar tu cuenta. Esta pantalla es una vista previa: no inicia sesión ni envía datos a ningún servidor.</p>
+<form id="login-form" novalidate>
+<div class="field"><label for="li-email">Email</label><input id="li-email" name="email" type="email" autocomplete="email" required maxlength="254"/></div>
+<div class="field"><label for="li-password">Contraseña</label><input id="li-password" name="password" type="password" autocomplete="current-password" required maxlength="200"/></div>
+<button class="button peach" type="submit">Iniciar sesión<span aria-hidden="true"> ↗</span></button>
+</form>
+<div class="preview-banner" id="login-banner" role="status" aria-live="polite"><strong>Esto es una vista previa.</strong> Ningún dato se envió ni se guardó — incluida la contraseña. El panel de clientes todavía no existe.</div>
+<p class="auth-switch">¿Todavía no tenés una cuenta? <a class="text-link" href="signup.html">Registrarse</a></p>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-grid">
+<div class="footer-brand"><a href="home.html" aria-label="OpenXpand — inicio"><img src="assets/logo.svg" width="170" height="39" alt="OpenXpand"/></a><p>Capacidades de red. Nuevas posibilidades.</p></div>
+<nav aria-label="Producto"><p class="footer-title">Producto</p><a href="#">Catálogo de APIs</a><a href="#">Probar las APIs</a></nav>
+<nav aria-label="Audiencias"><p class="footer-title">Audiencias</p><a href="#">Desarrolladores</a><a href="#">Operadores</a></nav>
+<nav aria-label="Contacto"><p class="footer-title">Contacto</p><a href="#">Solicitar una demo</a><a href="mailto:info@openxpand.com">info@openxpand.com</a></nav>
+<div><p class="footer-title">Legal</p><a href="#">Privacidad</a></div>
+</div>
+<p class="copyright">© 2026 OpenXpand. Todos los derechos reservados.</p>
+</footer>
+<script>
+document.getElementById('login-form').addEventListener('submit',function(e){
+ e.preventDefault();
+ document.getElementById('login-banner').setAttribute('data-visible','true');
+});
+</script>
+</body>
+</html>
